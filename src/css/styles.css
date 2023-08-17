@@ -1,3 +1,139 @@
-ul {
-    list-style: none;
+@import url('./reset.css');
+/*  */
+@import url('./header.css');
+/*  */
+@import url('./mobile-menu.css');
+/*  */
+@import url('./hero.css');
+/*  */
+@import url('./all-categories.css');
+/*  */
+@import url('./popular-recipes.css');
+/*  */
+@import url('./catalog.css');
+/*  */
+@import url('./footer.css');
+/*  */
+@import url('./modal-window-recipe.css');
+/*  */
+@import url('./order.css');
+/*  */
+@import url('./favorite.css');
+
+:root {
+    --primary-font: 'Inter', sans-serif;
+    --color-black-text: #050505;
+    --color-white-text: #F8F8F8;
+    --color-dark-theme: #161616;
+    --color-light-theme: #ffffff;
+    --color-green: #9BB537;
+    --color-raiting: #EEA10C;
+    --bg-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
+    --transform-hover-focus: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--primary-font);
+    color: var(--color-black);
+    background-color: var(--color-white);
+}
+
+.container {
+    padding-left: 15px;
+    padding-right: 15px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*-------CONTAINER < 375px-----------------*/
+@media screen and (max-width: 374px) {
+    .section {
+        padding: 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/*-------CONTAINER 375px-----------------*/
+@media screen and (min-width: 375px) {
+    .container {
+        max-width: 365px;
+    }
+
+    .section {
+        padding: 0;
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+
+/*-------CONTAINER 768px-----------------*/
+@media screen and (min-width: 768px) {
+    .container {
+        max-width: 734px;
+    }
+
+    .section {
+        padding: 0;
+        padding-top: 64px;
+        padding-bottom: 64px;
+    }
+}
+
+/*-------CONTAINER 1280px-----------------*/
+@media screen and (min-width: 1280px) {
+    .container {
+        max-width: 1206px;
+    }
+
+    .section {
+        padding: 0;
+        padding-top: 80px;
+        padding-bottom: 80px;
+    }
+}
+
+/*-----------HIDDEN TEXT---------------------*/
+.visuallyhidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+}
+
+/*-----------GO TO TOP---------------------*/
+/* .go-top {
+    position: fixed;
+    right: 50px;
+    bottom: 50px;
+    cursor: pointer;
+    display: none;
+    font-size: 20px;
+    color: var(--color-dark-green);
+    border: 1px solid var(--color-dark-green);
+    background-color: var(--color-white);
+    padding: 10px 10px;
+    z-index: 100;
+    border-radius: 8px;
+    transition: border var(--transform-hover-focus);
+}
+
+.go-top:hover {
+    color: var(--color-white);
+    background-color: var(--color-dark-green);
+    border: 1px solid var(--color-white);
+}
+
+.go-top--show {
+    display: block;
+} */

@@ -1,0 +1,9 @@
+.hero {
+    background-color: var(--color-black);
+}
+
+.section-hero {
+    padding: 0;
+    padding-top: 122px;
+    padding-bottom: 40px;
+}
