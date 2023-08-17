@@ -23,7 +23,8 @@
     "modern-normalize": "^1.1.0",
     "notiflix": "^3.2.6",
     "simplelightbox": "^2.14.1",
-    "slim-select": "^2.6.0"
+    "slim-select": "^2.6.0",
+    "swiper": "^10.2.0"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.6.0",
