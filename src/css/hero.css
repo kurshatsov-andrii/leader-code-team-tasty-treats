@@ -152,14 +152,14 @@ body.dark-theme .hero {
 }
 
 .hero .swiper-pagination {
-  width: 350px;
+  width: 350px !important;
   margin-left: 154px;
   margin-top: 14px;
   position: relative;
-  left: auto;
-  right: auto;
-  bottom: auto;
-  top: auto;
+  left: auto !important;
+  right: auto !important;
+  bottom: auto !important;
+  top: auto !important;
 }
 
 .hero .swiper-pagination .swiper-pagination-bullet {
@@ -170,7 +170,7 @@ body.dark-theme .hero {
   height: 12px;
   opacity: 1;
   background: none;
-  margin: 0px;
+  margin: 0px !important;
   position: relative;
 }
 
@@ -287,7 +287,7 @@ body.dark-theme
     width: 80px;
   }
   .hero .swiper-pagination {
-    width: 100%;
+    width: 100% !important;
     margin-top: 10px;
     margin-left: 0px;
   }
