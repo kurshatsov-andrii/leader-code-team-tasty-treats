@@ -1,5 +1,5 @@
 // import './js/header.js';
-// import './js/hero.js';
+import './js/hero.js';
 // import './js/all-categories.js';
 // import './js/popular-recipe.js';
 import './js/catalog.js';
