@@ -1,8 +1,14 @@
-// import { refs } from './refs';
-// import { createGallery } from './markup';
-// import { showButton, hideButton } from './buttons';
+// import './js/header.js';
+// import './js/hero.js';
+// import './js/all-categories.js';
+// import './js/popular-recipe.js';
+// import './js/catalog.js';
+// import './js/favorites.js';
+// import './js/modal-window-recipe.js';
+// import './js/order.js';
+
 import Notiflix from 'notiflix';
-//import SimpleLightbox from 'simplelightbox';
+import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 //Initialize the Notify Module with some options

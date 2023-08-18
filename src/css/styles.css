@@ -43,58 +43,66 @@ body {
 }
 
 .container {
-    padding-left: 15px;
-    padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
 /*-------CONTAINER < 375px-----------------*/
 @media screen and (max-width: 374px) {
-    .section {
+    .container {
+            padding-left: 15px;
+            padding-right:15px;
+        }
+    /* .section {
         padding: 0;
         padding-top: 40px;
         padding-bottom: 40px;
-    }
+    } */
 }
 
 /*-------CONTAINER 375px-----------------*/
 @media screen and (min-width: 375px) {
     .container {
         max-width: 365px;
+        padding-left: 20px;
+        padding-right:20px;
     }
 
-    .section {
+    /* .section {
         padding: 0;
         padding-top: 40px;
         padding-bottom: 40px;
-    }
+    } */
 }
 
 /*-------CONTAINER 768px-----------------*/
 @media screen and (min-width: 768px) {
     .container {
         max-width: 734px;
+        padding-left: 32px;
+        padding-right:32px;
     }
 
-    .section {
+    /* .section {
         padding: 0;
         padding-top: 64px;
         padding-bottom: 64px;
-    }
+    } */
 }
 
 /*-------CONTAINER 1280px-----------------*/
 @media screen and (min-width: 1280px) {
     .container {
         max-width: 1206px;
+        padding-left: 100px;
+        padding-right: 100px;
     }
 
-    .section {
+    /* .section {
         padding: 0;
         padding-top: 80px;
         padding-bottom: 80px;
-    }
+    } */
 }
 
 /*-----------HIDDEN TEXT---------------------*/
