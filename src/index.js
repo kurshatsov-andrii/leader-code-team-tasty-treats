@@ -1,7 +1,7 @@
 // import './js/header.js';
 // import './js/hero.js';
 // import './js/all-categories.js';
-// import './js/popular-recipe.js';
+import './js/popular-recipes.js';
 // import './js/catalog.js';
 // import './js/favorites.js';
 // import './js/modal-window-recipe.js';
