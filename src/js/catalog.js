@@ -1,4 +1,15 @@
+import axios from 'axios';
+import _ from 'lodash';
+import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const recipeList = document.querySelector('.recipe-list');
+const searchInput = document.querySelector('.search-input');
+const pagList = document.querySelector('.pagination-list');
+const reset = document.querySelector('.reset-wrap');
+
+// ==================VARIABLES================
+const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
 let PER_PAGE = 0;
 if (document.documentElement.clientWidth < 768) {
@@ -12,15 +23,34 @@ if (document.documentElement.clientWidth < 768) {
   PER_PAGE = 9;
 }
 
-async function fetchAllRecipes() {
-  const response = await fetch(
-    `https://tasty-treats-backend.p.goit.global/api/recipes?limit=${PER_PAGE}`
-  );
+// ================EVENT LISTENERS=================
+searchInput.addEventListener('input', _.debounce(handleSearchInput, 500));
 
+function handleSearchInput(event) {
+  const searchedTitle = event.target.value.trim();
+  renderSearchedRecipes(searchedTitle);
+}
+
+reset.addEventListener('click', handleResetClick);
+
+function handleResetClick() {
+  searchInput.value = '';
+  renderAllRecipes();
+}
+
+// =================FETCH FUNCTIONS===================
+export async function fetchAllRecipes() {
+  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}`);
   return response;
 }
 
-function createAllRecipesMarkUp(allRecipesObj) {
+async function fetchRecipeByTitle(title) {
+  const response = await axios.get(`${BASE_URL}recipes?title=${title}`);
+  return response;
+}
+
+// ================= CREATE MARK-UP FUNCTIONS=================
+export function createAllRecipesMarkUp(allRecipesObj) {
   return allRecipesObj.results
     .map(({ title, description, preview, rating }) => {
       return `<li class="recipe-item">
@@ -62,16 +92,7 @@ function createAllRecipesMarkUp(allRecipesObj) {
     .join('');
 }
 
-async function renderAllRecipes() {
-  const response = await fetchAllRecipes();
-  const allRecipes = await response.json();
-
-  recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
-}
-
-renderAllRecipes();
-
-// HELPERS //
+// ===============HELPER FUNCTIONS============== //
 
 function formatDescription(description) {
   let result;
@@ -94,3 +115,43 @@ function formatDescription(description) {
 
   return result;
 }
+
+// ==============RENDER FUNCTIONS======================
+export async function renderAllRecipes() {
+  try {
+    const response = await fetchAllRecipes();
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const allRecipes = response.data;
+
+    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+async function renderSearchedRecipes(searchedTitle) {
+  try {
+    const response = await fetchRecipeByTitle(searchedTitle);
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const allRecipes = response.data;
+
+    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+// ================== MAIN ACTIONS ==================
+renderAllRecipes();
