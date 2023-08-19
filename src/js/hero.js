@@ -2,11 +2,14 @@ import Swiper from 'swiper/swiper-bundle.min.mjs';
 import 'swiper/swiper-bundle.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import axios from 'axios';
+import { alertError } from '../js/custom-popup';
 
 const EVENTS_API = 'https://tasty-treats-backend.p.goit.global/api/events';
 const heroSlider = document.querySelector('.js-events');
 
-initEvents();
+if (heroSlider) {
+  initEvents();
+}
 
 async function initEvents() {
   try {
@@ -64,7 +67,8 @@ function renderEvents(events) {
 }
 
 function showError(error) {
-  Notify.failure(error.message);
+  // Notify.failure(error.message);
+  alertError(error.message);
 }
 
 function initSlider() {

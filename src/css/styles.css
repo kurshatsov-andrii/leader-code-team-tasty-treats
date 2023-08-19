@@ -17,47 +17,48 @@
 @import url('./modal-window-recipe.css');
 /* Руслан */
 @import url('./order.css');
+@import url('./custom-popup.css');
 /* Олег Юлій */
 @import url('./favorite.css');
 
 :root {
-    --primary-font: 'Inter', sans-serif;
-    --color-black-text: #050505;
-    --color-white-text: #F8F8F8;
-    --color-dark-theme: #161616;
-    --color-light-theme: #F8F8F8;
-    --color-green: #9BB537;
-    --color-raiting: #EEA10C;
-    --bg-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
-    --transform-hover-focus: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --primary-font: 'Inter', sans-serif;
+  --color-black-text: #050505;
+  --color-white-text: #f8f8f8;
+  --color-dark-theme: #161616;
+  --color-light-theme: #f8f8f8;
+  --color-green: #9bb537;
+  --color-raiting: #eea10c;
+  --bg-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
+  --transform-hover-focus: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    font-family: var(--primary-font);
-    color: var(--color-black);
-    background-color: var(--color-light-theme);        
+  font-family: var(--primary-font);
+  color: var(--color-black);
+  background-color: var(--color-light-theme);
 }
 
-body .dark-theme{
-    background-color: var(--color-dark-theme);
+body .dark-theme {
+  background-color: var(--color-dark-theme);
 }
 
 .container {
-    margin-left: auto;
-    margin-right: auto;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*-------CONTAINER < 375px-----------------*/
 @media screen and (max-width: 374px) {
-    .container {
-            padding-left: 15px;
-            padding-right:15px;
-        }
-    /* .section {
+  .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+  /* .section {
         padding: 0;
         padding-top: 40px;
         padding-bottom: 40px;
@@ -66,13 +67,13 @@ body .dark-theme{
 
 /*-------CONTAINER 375px-----------------*/
 @media screen and (min-width: 375px) {
-    .container {
-        max-width: 375px;
-        padding-left: 20px;
-        padding-right:20px;        
-    }
+  .container {
+    max-width: 375px;
+    padding-left: 20px;
+    padding-right: 20px;
+  }
 
-    /* .all-section-recepies {
+  /* .all-section-recepies {
         display: flex;
         flex-wrap: wrap;
         gap: 40px;
@@ -84,7 +85,7 @@ body .dark-theme{
         gap: 40px;        
         } */
 
-    /* .section {
+  /* .section {
         padding: 0;
         padding-top: 40px;
         padding-bottom: 40px;
@@ -93,30 +94,29 @@ body .dark-theme{
 
 /*-------CONTAINER 768px-----------------*/
 @media screen and (min-width: 768px) {
-    .container {
-        max-width: 768px;
-        padding-left: 32px;
-        padding-right:32px;
-    }
+  .container {
+    max-width: 768px;
+    padding-left: 32px;
+    padding-right: 32px;
+  }
 
-.all-section-recepies {
+  .all-section-recepies {
     display: flex;
     gap: 32px;
     padding: 0;
-    padding-bottom: 40px;   
+    padding-bottom: 40px;
     padding-left: 32px;
     padding-right: 32px;
- 
-}
+  }
 
-    .section-categories-popular {
-        display: flex;
-        gap: 64px;
-        flex-direction: column;
-        margin-top: 24px;         
-        }
+  .section-categories-popular {
+    display: flex;
+    gap: 64px;
+    flex-direction: column;
+    margin-top: 24px;
+  }
 
-    /* .section {
+  /* .section {
         padding: 0;
         padding-top: 64px;
         padding-bottom: 64px;
@@ -125,19 +125,19 @@ body .dark-theme{
 
 /*-------CONTAINER 1280px-----------------*/
 @media screen and (min-width: 1280px) {
-    .container {
-        max-width: 1280px;
-        padding-left: 100px;
-        padding-right: 100px;
-    }
-
-    .all-section-recepies {                    
+  .container {
+    max-width: 1280px;
     padding-left: 100px;
     padding-right: 100px;
-    gap: 64px;          
-    }
+  }
 
-    /* .section {
+  .all-section-recepies {
+    padding-left: 100px;
+    padding-right: 100px;
+    gap: 64px;
+  }
+
+  /* .section {
         padding: 0;
         padding-top: 80px;
         padding-bottom: 80px;
@@ -146,16 +146,16 @@ body .dark-theme{
 
 /*-----------HIDDEN TEXT---------------------*/
 .visuallyhidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    border: 0;
-    padding: 0;
-    white-space: nowrap;
-    clip-path: inset(100%);
-    clip: rect(0 0 0 0);
-    overflow: hidden;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }
 
 /*-----------GO TO TOP---------------------*/
