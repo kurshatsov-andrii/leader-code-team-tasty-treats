@@ -33,4 +33,3 @@ function createAllCategoriesMarkup(categories) {
     }).join("");
     
 }
-

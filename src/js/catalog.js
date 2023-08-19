@@ -7,6 +7,7 @@ const recipeList = document.querySelector('.recipe-list');
 const searchInput = document.querySelector('.search-input');
 const pagList = document.querySelector('.pagination-list');
 const reset = document.querySelector('.reset-wrap');
+const allCategories = document.querySelector('.all-categories');
 
 // ==================VARIABLES================
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
@@ -14,26 +15,37 @@ const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 let PER_PAGE = 0;
 if (document.documentElement.clientWidth < 768) {
   PER_PAGE = 6;
-} else if (
-  document.documentElement.clientWidth >= 768 &&
-  document.documentElement.clientWidth < 1280
-) {
+} else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
   PER_PAGE = 8;
 } else {
   PER_PAGE = 9;
 }
 
 // ================EVENT LISTENERS=================
-searchInput.addEventListener('input', _.debounce(handleSearchInput, 500));
+
+if (searchInput) {
+  searchInput.addEventListener('input', _.debounce(handleSearchInput, 500));
+}
 
 function handleSearchInput(event) {
   const searchedTitle = event.target.value.trim();
   renderSearchedRecipes(searchedTitle);
 }
 
-reset.addEventListener('click', handleResetClick);
+if (reset) {
+  reset.addEventListener('click', handleResetClick);
+}
 
 function handleResetClick() {
+  searchInput.value = '';
+  renderAllRecipes();
+}
+
+if (allCategories) {
+  allCategories.addEventListener('click', handleAllCategoriesClick);
+}
+
+function handleAllCategoriesClick() {
   searchInput.value = '';
   renderAllRecipes();
 }
@@ -99,19 +111,13 @@ function formatDescription(description) {
   let maxWidth = 0;
   if (document.documentElement.clientWidth < 768) {
     maxWidth = 98;
-  } else if (
-    document.documentElement.clientWidth >= 768 &&
-    document.documentElement.clientWidth < 1280
-  ) {
+  } else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
     maxWidth = 60;
   } else {
     maxWidth = 68;
   }
 
-  result =
-    description.length <= maxWidth
-      ? description
-      : description.slice(0, maxWidth) + ' ...';
+  result = description.length <= maxWidth ? description : description.slice(0, maxWidth) + ' ...';
 
   return result;
 }
@@ -154,4 +160,6 @@ async function renderSearchedRecipes(searchedTitle) {
 }
 
 // ================== MAIN ACTIONS ==================
-renderAllRecipes();
+if (recipeList) {
+  renderAllRecipes();
+}
