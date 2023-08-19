@@ -2,21 +2,16 @@
 import './js/hero.js';
 import './js/catalog.js';
 import './js/popular-recipes.js';
-import './js/all-categories.js';
+// import './js/all-categories.js';
 // import './js/favorites.js';
 // import './js/modal-window-recipe.js';
-<<<<<<< Updated upstream
 import './js/order.js';
 import './js/custom-popup.js';
-=======
-// import './js/order.js';
 import './js/scroll-to-top.js';
->>>>>>> Stashed changes
 
 import Notiflix from 'notiflix';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
-// import * as _ from 'lodash';
 
 //Initialize the Notify Module with some options
 Notiflix.Notify.init({
