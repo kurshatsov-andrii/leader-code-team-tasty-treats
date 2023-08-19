@@ -139,6 +139,7 @@ body .dark-theme {
     padding-left: 100px;
     padding-right: 100px;
     gap: 64px;
+    flex-wrap: nowrap;
 }
 
 /* .section {
