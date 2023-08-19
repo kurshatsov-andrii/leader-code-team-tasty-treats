@@ -65,8 +65,20 @@ body {
     .container {
         max-width: 375px;
         padding-left: 20px;
-        padding-right:20px;
+        padding-right:20px;        
     }
+
+    /* .all-section-recepies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        }
+
+    .section-categories-popular {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;        
+        } */
 
     /* .section {
         padding: 0;
@@ -83,6 +95,23 @@ body {
         padding-right:32px;
     }
 
+.all-section-recepies {
+    display: flex;
+    gap: 32px;
+    padding: 0;
+    padding-bottom: 40px;   
+    padding-left: 32px;
+    padding-right: 32px;
+ 
+}
+
+    .section-categories-popular {
+        display: flex;
+        gap: 64px;
+        flex-direction: column;
+        margin-top: 24px;         
+        }
+
     /* .section {
         padding: 0;
         padding-top: 64px;
@@ -96,6 +125,12 @@ body {
         max-width: 1280px;
         padding-left: 100px;
         padding-right: 100px;
+    }
+
+    .all-section-recepies {                    
+    padding-left: 100px;
+    padding-right: 100px;
+    gap: 64px;          
     }
 
     /* .section {
