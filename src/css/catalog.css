@@ -1,6 +1,6 @@
-/* .section {
-  background-color: orange;
-} */
+.catalog {
+  padding-top: 43px;
+}
 
 /* .hidden {
   display: none;
@@ -87,6 +87,7 @@
   justify-content: end;
   align-items: center;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .icon-reset {
@@ -233,19 +234,22 @@
   justify-content: center;
 }
 
-.btn {
+.pag-btn {
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: none;
+  background-color: transparent;
+  border: 1px solid rgba(5, 5, 5, 0.3);
 }
 
 .unactive-btn {
   background-color: #050505;
+  border: none;
 }
 
 .active-btn {
   background-color: #9bb537;
+  border: none;
 }
 
 .button-one,
@@ -370,61 +374,3 @@
   height: 100%;
   opacity: 0;
 }
-
-/* SIMPLE RATING */
-
-/* .rating {
-  position: relative;
-  font-size: 18px;
-  display: inline-block;
-}
-
-.rating::before {
-  content: '★★★★★';
-  display: block;
-  color: red;
-}
-
-.rating-items {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  display: flex;
-  flex-direction: row-reverse;
-  overflow: hidden;
-}
-.rating-item {
-  position: absolute;
-  width: 0;
-  height: 0;
-  opacity: 0;
-  visibility: hidden;
-  top: 0;
-  left: 0;
-}
-
-.rating-item:checked,
-.rating-item:checked ~ .rating-label {
-  color: #eea10c;
-}
-
-.rating-label {
-  flex: 0 0 20%;
-  height: 100%;
-  cursor: pointer;
-  color: green;
-}
-
-.rating-label::before {
-  content: '★';
-  display: block;
-  transition: color var(--transform-hover-focus);
-}
-
-.rating-label:hover,
-.rating-label:hover ~ .rating-label,
-.rating-label:checked ~ .rating-label:hover {
-  color: #eea10c;
-} */
