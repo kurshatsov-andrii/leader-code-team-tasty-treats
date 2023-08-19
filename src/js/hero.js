@@ -1,28 +1,34 @@
-// --------------------------------------------------
 import Swiper from 'swiper/swiper-bundle.min.mjs';
 import 'swiper/swiper-bundle.min.css';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import axios from 'axios';
 
 const EVENTS_API = 'https://tasty-treats-backend.p.goit.global/api/events';
 const heroSlider = document.querySelector('.js-events');
 
-fetchMasterclasses()
-  .then(masterclass => {
-    renderMasterclasses(masterclass);
-    initSlider();
-  })
-  .catch(error => {
-    showError(error.message);
-  });
+initEvents();
 
-function fetchMasterclasses() {
-  return fetch(EVENTS_API).then(response => {
-    return response.json();
-  });
+async function initEvents() {
+  try {
+    const eventsData = await fetchEvents();
+    renderEvents(eventsData);
+    initSlider();
+  } catch (error) {
+    showError(error);
+  }
 }
 
-function renderMasterclasses(masterclasses) {
-  const sliderMarkup = masterclasses.map(
+async function fetchEvents() {
+  try {
+    const response = await axios.get(EVENTS_API);
+    return response.data;
+  } catch (error) {
+    showError(error);
+  }
+}
+
+function renderEvents(events) {
+  const sliderMarkup = events.map(
     ({ cook, topic, _id }) =>
       `
     <div class="swiper-slide" data-id="${_id}">
@@ -58,12 +64,12 @@ function renderMasterclasses(masterclasses) {
 }
 
 function showError(error) {
-  Notify.failure(error);
+  Notify.failure(error.message);
 }
 
 function initSlider() {
   new Swiper('.swiper-hero', {
-    loop: false,
+    loop: true,
     speed: 1000,
     slidesPerView: 1,
     spaceBetween: 8,
