@@ -25,7 +25,7 @@
     --color-black-text: #050505;
     --color-white-text: #F8F8F8;
     --color-dark-theme: #161616;
-    --color-light-theme: #ffffff;
+    --color-light-theme: #F8F8F8;
     --color-green: #9BB537;
     --color-raiting: #EEA10C;
     --bg-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
@@ -39,7 +39,11 @@ html {
 body {
     font-family: var(--primary-font);
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: var(--color-light-theme);        
+}
+
+body .dark-theme{
+    background-color: var(--color-dark-theme);
 }
 
 .container {
