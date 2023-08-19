@@ -1,5 +1,7 @@
 import { openPopupById } from '../js/custom-popup';
 import { alertError } from '../js/custom-popup';
+import axios from 'axios';
+const ORDERS_API = 'https://tasty-treats-backend.p.goit.global/api/orders/add';
 
 const orderForm = document.querySelector('.order-form');
 const inputs = document.querySelectorAll('.custom-input');
@@ -11,12 +13,34 @@ if (orderForm) {
 
 async function orderSend(e) {
   e.preventDefault();
-  const answer = formValidation(this);
-  if (answer != false) {
+  const orderForm = this;
+  const formIsValid = formValidation(orderForm);
+  if (formIsValid === true) {
     openPopupById('loading');
-    setTimeout(() => {
-      alertError('Order not sendet. Javascript in process! :))');
-    }, 3000);
+    axios({
+      method: 'POST',
+      url: ORDERS_API,
+      data: {
+        name: orderForm.name.value,
+        phone: orderForm.phone.value,
+        email: orderForm.email.value,
+        comment: orderForm.comment.value,
+      },
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+      .then(request => {
+        setTimeout(() => {
+          openPopupById('ok');
+          orderForm.reset();
+        }, 500);
+      })
+      .catch(error => {
+        setTimeout(() => {
+          alertError(error.request.statusText, error.message);
+        }, 500);
+      });
   }
 }
 
@@ -36,7 +60,7 @@ function clearInput() {
   this.classList.remove('red');
 }
 
-//FORM VALIDATION
+//form validation
 function formValidation(formId) {
   let checker = true;
   formId.querySelectorAll('[required]').forEach(required => {
@@ -45,10 +69,7 @@ function formValidation(formId) {
       addErrorMarkup(requiredLabel, 'The field is empty!');
     } else {
       //Name
-      if (
-        required.name == 'name' &&
-        /[^A-zА-яЁё\+ ()\-]/.test(required.value)
-      ) {
+      if (required.name == 'name' && /[^A-zА-яЁё\+ ()\-]/.test(required.value)) {
         addErrorMarkup(requiredLabel, 'Name cannot contain digits!');
       }
       //type tel
@@ -56,25 +77,17 @@ function formValidation(formId) {
         addErrorMarkup(requiredLabel, 'Wrong phone format!');
       }
       //email
-      if (
-        required.type == 'email' &&
-        !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(
-          required.value
-        )
-      ) {
+      if (required.type == 'email' && !/^[\.A-z0-9_\-\+]+[@][A-z0-9_\-]+([.][A-z0-9_\-]+)+[A-z]{1,4}$/.test(required.value)) {
         addErrorMarkup(requiredLabel, 'Wrong E-mail format!');
       }
     }
 
-    //ERROR TEXT CREATE
+    //add error text to markup
     function addErrorMarkup(correntLabel, text) {
       if (addErrorText === true) {
         const errors = correntLabel.querySelectorAll('.label__error').length;
         if (errors < 1) {
-          correntLabel.insertAdjacentHTML(
-            'beforeend',
-            '<div class="label__error">' + text + '</div>'
-          );
+          correntLabel.insertAdjacentHTML('beforeend', `<div class="label__error">${text}</div>`);
           setTimeout(function () {
             correntLabel.querySelector('.label__error').classList.add('active');
           }, 5);
