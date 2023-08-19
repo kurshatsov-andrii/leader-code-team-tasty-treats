@@ -32,6 +32,7 @@ li {
   background: var(--color-green);
   color: var(--color-light-theme);
 }
+
 /*MOBILE < 375px*/
 @media screen and (max-width: 374px) {
 }
