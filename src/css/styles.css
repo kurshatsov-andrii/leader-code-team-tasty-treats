@@ -38,9 +38,15 @@ html {
 }
 
 body {
+<<<<<<< Updated upstream
   font-family: var(--primary-font);
   color: var(--color-black);
   background-color: var(--color-light-theme);
+=======
+    font-family: var(--primary-font);
+    color: var(--color-black-text);
+    background-color: var(--color-light-theme);        
+>>>>>>> Stashed changes
 }
 
 body .dark-theme {
@@ -73,7 +79,11 @@ body .dark-theme {
     padding-right: 20px;
   }
 
+<<<<<<< Updated upstream
   /* .all-section-recepies {
+=======
+    .all-section-recepies {
+>>>>>>> Stashed changes
         display: flex;
         flex-wrap: wrap;
         gap: 40px;
@@ -83,7 +93,7 @@ body .dark-theme {
         display: flex;
         flex-wrap: wrap;
         gap: 40px;        
-        } */
+        }
 
   /* .section {
         padding: 0;
@@ -129,7 +139,13 @@ body .dark-theme {
     max-width: 1280px;
     padding-left: 100px;
     padding-right: 100px;
+<<<<<<< Updated upstream
   }
+=======
+    gap: 64px;    
+    flex-wrap: nowrap;
+    }
+>>>>>>> Stashed changes
 
   .all-section-recepies {
     padding-left: 100px;
@@ -159,16 +175,16 @@ body .dark-theme {
 }
 
 /*-----------GO TO TOP---------------------*/
-/* .go-top {
+.go-top {
     position: fixed;
     right: 50px;
     bottom: 50px;
     cursor: pointer;
     display: none;
     font-size: 20px;
-    color: var(--color-dark-green);
-    border: 1px solid var(--color-dark-green);
-    background-color: var(--color-white);
+    color: var(--color-white-text);
+    border: 1px solid var(--color-white-text);
+    background-color: var(--color-green);
     padding: 10px 10px;
     z-index: 100;
     border-radius: 8px;
@@ -177,10 +193,14 @@ body .dark-theme {
 
 .go-top:hover {
     color: var(--color-white);
-    background-color: var(--color-dark-green);
-    border: 1px solid var(--color-white);
+    background-color: var(--color-green);
+    border: 1px solid var(--color-white-text);
 }
 
 .go-top--show {
     display: block;
+<<<<<<< Updated upstream
 } */
+=======
+}
+>>>>>>> Stashed changes
