@@ -1,7 +1,7 @@
 @import url('./reset.css');
 /* Богдан Царук */
 @import url('./header.css');
-/*  */
+/* Богдан Царук */
 @import url('./mobile-menu.css');
 /* Руслан */
 @import url('./hero.css');
@@ -11,13 +11,13 @@
 @import url('./popular-recipes.css');
 /* Анна */
 @import url('./catalog.css');
-/*  */
+/* Андрій */
 @import url('./footer.css');
-/*  */
+/* Юрій */
 @import url('./modal-window-recipe.css');
 /* Руслан */
 @import url('./order.css');
-/*  */
+/* Олег Юлій */
 @import url('./favorite.css');
 
 :root {
@@ -63,7 +63,7 @@ body {
 /*-------CONTAINER 375px-----------------*/
 @media screen and (min-width: 375px) {
     .container {
-        max-width: 365px;
+        max-width: 375px;
         padding-left: 20px;
         padding-right:20px;
     }
@@ -78,7 +78,7 @@ body {
 /*-------CONTAINER 768px-----------------*/
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 734px;
+        max-width: 768px;
         padding-left: 32px;
         padding-right:32px;
     }
@@ -93,7 +93,7 @@ body {
 /*-------CONTAINER 1280px-----------------*/
 @media screen and (min-width: 1280px) {
     .container {
-        max-width: 1206px;
+        max-width: 1280px;
         padding-left: 100px;
         padding-right: 100px;
     }
