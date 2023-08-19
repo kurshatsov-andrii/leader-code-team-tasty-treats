@@ -1,27 +1,30 @@
-<section class="catalog-container container section">
-  <h2 class="visuallyhidden">Recipe catalog</h2>
-  <label class="search-field">
-    <span class="search-input-title">Search</span>
-    <span class="search-input-wrap">
-      <input
-        type="text"
-        name="word-search"
-        class="search-input"
-        placeholder="Enter Text"
-      />
-      <svg class="icon-search" width="18" height="18">
-        <use href="./images/icons.svg#icon-search"></use>
-      </svg>
-    </span>
-  </label>
-  <div class="reset-wrap">
-    <svg class="icon-reset" width="16" height="16">
-      <use href="./images/icons.svg#icon-reset"></use>
-    </svg>
-    <span class="reset-text">Reset the filter</span>
-  </div>
+<section class="container">
+  <div class="search-recipe-list-wrap">
+    <h2 class="visuallyhidden">Recipe catalog</h2>
+    <label class="search-field">
+      <span class="search-input-title">Search</span>
+      <span class="search-input-wrap">
+        <input
+          type="text"
+          name="word-search"
+          class="search-input"
+          placeholder="Enter Text"
+        />
+        <svg class="icon-search" width="18" height="18">
+          <use href="./images/icons.svg#icon-search"></use>
+        </svg>
+      </span>
+    </label>
 
-  <ul class="recipe-list"></ul>
+    <div class="reset-wrap">
+      <svg class="icon-reset" width="16" height="16">
+        <use href="./images/icons.svg#icon-reset"></use>
+      </svg>
+      <span class="reset-text">Reset the filter</span>
+    </div>
+
+    <ul class="recipe-list"></ul>
+  </div>
   <ul class="pagination-list">
     <li class="pagination-item">
       <button class="last-left-button btn unactive-btn">
@@ -61,3 +64,67 @@
     </li>
   </ul>
 </section>
+
+<!-- RATING -->
+
+<!-- <div class="rating">
+    <div class="rating-value">3.6</div>
+    <div class="rating-body">
+      <div class="rating-active">
+        <div class="rating-items">
+          <input type="radio" class="rating-item" value="1" name="rating" />
+          <input type="radio" class="rating-item" value="2" name="rating" />
+          <input type="radio" class="rating-item" value="3" name="rating" />
+          <input type="radio" class="rating-item" value="4" name="rating" />
+          <input type="radio" class="rating-item" value="5" name="rating" />
+        </div>
+      </div>
+    </div>
+  </div> -->
+
+<!-- SIMPLE RATING -->
+
+<!-- <div class="rating">
+    <div class="rating-items">
+      <input
+        type="radio"
+        name="rating"
+        id="rating-5"
+        class="rating-item"
+        value="5"
+      />
+      <label for="rating-5" class="rating-label"></label>
+      <input
+        type="radio"
+        name="rating"
+        id="rating-4"
+        class="rating-item"
+        value="4"
+      />
+      <label for="rating-4" class="rating-label"></label>
+      <input
+        type="radio"
+        name="rating"
+        id="rating-3"
+        class="rating-item"
+        value="3"
+      />
+      <label for="rating-3" class="rating-label"></label>
+      <input
+        type="radio"
+        name="rating"
+        id="rating-2"
+        class="rating-item"
+        value="2"
+      />
+      <label for="rating-2" class="rating-label"></label>
+      <input
+        type="radio"
+        name="rating"
+        id="rating-1"
+        class="rating-item"
+        value="1"
+      />
+      <label for="rating-1" class="rating-label"></label>
+    </div>
+  </div> -->
