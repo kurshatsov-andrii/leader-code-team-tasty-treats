@@ -66,11 +66,10 @@ function modalWindowRecipesMarkUp(obj) {
 const { title, instructions, youtube, ingredients, rating, tags, time, preview } = obj;
 const addHtml = `<h2>${title.toUpperCase()}</h2>
       <div class="video-recipe">
-      <video
+      <video class="video-cont"
   src=${youtube}
   poster=${preview}
-  width="467"
-  height="250"
+  
   controls
   autoplay
   loop
@@ -83,12 +82,25 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
           ${tags.map((tag) => `<li><span class="tag-item"><p>#${tag}</p></span></li>`).join("")}
           </ul>
         </div>
-  <div class="rating">
-  ${rating}
-  </div>
-  <p class="time">
+        
+        <div class="rating">
+        <div class="rating-value">${rating}</div>
+        <div class="rating-body">
+          <div class="rating-active" style="width:${(rating * 100) / 5}%">
+            <div class="rating-items">
+              <input type="radio" class="rating-item" value="1" name="rating" />
+              <input type="radio" class="rating-item" value="2" name="rating" />
+              <input type="radio" class="rating-item" value="3" name="rating" />
+              <input type="radio" class="rating-item" value="4" name="rating" />
+              <input type="radio" class="rating-item" value="5" name="rating" />
+            </div>
+          </div>
+        </div>
+        <p class="time">
   ${time} min
   </p>
+      </div>
+  
       </div>
       <div class="ingredients">
         <ul class="ingredients-list">
