@@ -7,6 +7,7 @@ import './js/popular-recipes.js';
 // import './js/modal-window-recipe.js';
 import './js/order.js';
 import './js/custom-popup.js';
+import './js/theme-switcher.js';
 import './js/scroll-to-top.js';
 
 import Notiflix from 'notiflix';
