@@ -3,6 +3,7 @@ import Notiflix from 'notiflix';
 import axios from "axios";
 
 import { openPopupById } from '../js/custom-popup';
+import { closeOllPopups } from '../js/custom-popup';
 import { functions, lte } from 'lodash';
 
 
@@ -15,6 +16,8 @@ const recipeList = document.querySelector('.recipe-list');
 popularRecipeList.addEventListener('click', onPopularRecipe);
 recipeList.addEventListener('click', onCatalogRecipe);
 
+
+
 let recipeId = "";
 
 function onCatalogRecipe(evt) {
@@ -23,6 +26,8 @@ function onCatalogRecipe(evt) {
     return
   }
   recipeId = evt.target.dataset.id;
+
+  // document.addEventListener('keydown', onEscClose);
   
   openPopupById('recepie');
   fetchRecipes(recipeId);
@@ -36,6 +41,8 @@ function onPopularRecipe(evt) {
     return
   }
   recipeId = evt.target.dataset.id;
+
+  // document.addEventListener('keydown', onEscClose);
   
   openPopupById('recepie');
   fetchRecipes(recipeId);
@@ -117,7 +124,13 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
     
 }
 
-
+// function onEscClose(evt) {
+//   if (evt.code === 'Escape') {
+//     closeOllPopups();
+//     document.removeEventListener('keydown', onEscClose);
+    
+//   }
+// }
 
 
 
