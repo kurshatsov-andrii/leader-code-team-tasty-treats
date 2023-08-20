@@ -23,10 +23,10 @@ body.dark-theme .btn:focus {
   border-radius: 12px;
 }
 /* scrooll для Mozilla Firefox */
-/* .categories-container {
+.categories-container {
   scrollbar-color: rgba(5, 5, 5, 0.18);
   scrollbar-width: thin;
-} */
+}
 li {
   list-style-type: none;
 }
