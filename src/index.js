@@ -2,9 +2,9 @@
 import './js/hero.js';
 import './js/catalog.js';
 import './js/popular-recipes.js';
-// import './js/all-categories.js';
+import './js/all-categories.js';
 // import './js/favorites.js';
-// import './js/modal-window-recipe.js';
+import './js/modal-window-recipe.js';
 import './js/order.js';
 import './js/custom-popup.js';
 import './js/theme-switcher.js';
