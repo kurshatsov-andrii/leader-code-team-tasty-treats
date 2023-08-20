@@ -1,3 +1,116 @@
-.pagination{
-    color:aliceblue;
+/* ============= PAGINATION =============== */
+.pagination-list {
+  display: flex;
+  justify-content: center;
+  gap: 0 14px;
+  margin: 0 auto;
 }
+
+.pag-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid rgba(5, 5, 5, 0.3);
+  color: #050505;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transform-hover-focus), border var(--transform-hover-focus);
+}
+
+.pag-item:hover,
+.pag-item:focus {
+  background-color: #9bb537;
+  border: none;
+}
+
+.unactive {
+  background-color: #050505;
+  color: rgba(248, 248, 248, 0.5);
+  border: none;
+  pointer-events: none;
+}
+
+.active {
+  background-color: #9bb537;
+  border: none;
+}
+
+.dots {
+  pointer-events: none;
+}
+
+@media screen and (min-width: 1280px) {
+  .pagination-list {
+    width: 782px;
+    margin: 0;
+    margin-left: auto;
+  }
+}
+
+/* .button-one,
+.button-two,
+.button-three {
+  color: #050505;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.22;
+}
+
+.button-three {
+  display: none;
+}
+
+.button-dots {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.pagination-item:nth-child(1),
+.pagination-item:nth-child(7) {
+  margin-right: 4px;
+}
+
+.pagination-item:nth-child(2),
+.pagination-item:nth-child(6) {
+  margin-right: 14px;
+}
+
+.pagination-item:nth-child(3),
+.pagination-item:nth-child(4) {
+  margin-right: 8px;
+}
+
+.icon-slider-left {
+  fill: rgba(255, 255, 255, 0.5);
+}
+
+.icon-slider-right {
+  fill: rgba(5, 5, 5, 1);
+}
+
+@media screen and (min-width: 768px) {
+  .button-three {
+    display: block;
+  }
+
+  .pagination-item:nth-child(1),
+  .pagination-item:nth-child(7) {
+    margin-right: 8px;
+  }
+
+  .pagination-item:nth-child(2),
+  .pagination-item:nth-child(6) {
+    margin-right: 24px;
+  }
+
+  .pagination-item:nth-child(3),
+  .pagination-item:nth-child(4),
+  .pagination-item:nth-child(5) {
+    margin-right: 10px;
+  }
+} */
