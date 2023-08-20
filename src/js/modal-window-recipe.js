@@ -2,26 +2,45 @@ import Notiflix from 'notiflix';
 
 import axios from "axios";
 
-// import { openPopupById } from '../js/custom-popup';
-import { functions } from 'lodash';
+import { openPopupById } from '../js/custom-popup';
+import { functions, lte } from 'lodash';
 
 
-const recipeId = "6462a8f74c3d0ddd28897fbc";
+
 const recipeModalWindow = document.querySelector(".backend-info");
 const popularRecipeList = document.querySelector('.popular-recipes-js');
 
 const recipeList = document.querySelector('.recipe-list');
 
-popularRecipeList.addEventListener('click', onRecipe);
-recipeList.addEventListener('click', onRecipe);
+popularRecipeList.addEventListener('click', onPopularRecipe);
+recipeList.addEventListener('click', onCatalogRecipe);
 
+let recipeId = "";
 
-function onRecipe(evt) {
+function onCatalogRecipe(evt) {
   evt.preventDefault();
-  // if (evt.target.nodeName !== 'BUTTON') {
-  //   return
-  // }
-  console.dir(evt.target);
+  if (evt.target.nodeName !== 'BUTTON') {
+    return
+  }
+  recipeId = evt.target.dataset.id;
+  
+  openPopupById('recepie');
+  fetchRecipes(recipeId);
+  renderModalWindow(recipeId)
+
+}
+
+function onPopularRecipe(evt) {
+  evt.preventDefault();
+  if (evt.target.nodeName !== 'IMG') {
+    return
+  }
+  recipeId = evt.target.dataset.id;
+  
+  openPopupById('recepie');
+  fetchRecipes(recipeId);
+  renderModalWindow(recipeId)
+
 }
 
 async function fetchRecipes(id) {
@@ -33,11 +52,11 @@ async function fetchRecipes(id) {
     
   }
 
-  async function renderModalWindow() {
+  async function renderModalWindow(id) {
     try {
     const response = await fetchRecipes(recipeId);
     const recipes = await response.json();
-    console.log(recipes);
+    
     recipeModalWindow.innerHTML = modalWindowRecipesMarkUp(recipes);
 }
 catch(err) {Notiflix.Report.failure(err); console.log(err)}
@@ -88,8 +107,7 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
 
 
 
-renderModalWindow()
 
 
-openPopupById('recepie');
-// data-popup=''recepie';
+
+
