@@ -32,8 +32,6 @@ function createAllCategoriesMarkup(categories) {
         </li>`
     }).join("");
     
-}
-
 // const allCategoriesBtn = document.querySelector('.all-categories');
 // allCategoriesBtn.addEventListener('click', getAllRecipes);
 // getAllRecipes(event){
