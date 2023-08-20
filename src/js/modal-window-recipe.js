@@ -27,7 +27,7 @@ function onCatalogRecipe(evt) {
   }
   recipeId = evt.target.dataset.id;
 
-  document.addEventListener('keydown', onEscClose);
+  // document.addEventListener('keydown', onEscClose);
   
   openPopupById('recepie');
   fetchRecipes(recipeId);
@@ -42,7 +42,7 @@ function onPopularRecipe(evt) {
   }
   recipeId = evt.target.dataset.id;
 
-  document.addEventListener('keydown', onEscClose);
+  // document.addEventListener('keydown', onEscClose);
   
   openPopupById('recepie');
   fetchRecipes(recipeId);
@@ -124,13 +124,13 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
     
 }
 
-function onEscClose(evt) {
-  if (evt.code === 'Escape') {
-    closeOllPopups();
-    document.removeEventListener('keydown', onEscClose);
+// function onEscClose(evt) {
+//   if (evt.code === 'Escape') {
+//     closeOllPopups();
+//     document.removeEventListener('keydown', onEscClose);
     
-  }
-}
+//   }
+// }
 
 
 
