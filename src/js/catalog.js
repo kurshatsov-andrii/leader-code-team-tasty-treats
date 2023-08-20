@@ -21,6 +21,15 @@ if (document.documentElement.clientWidth < 768) {
   PER_PAGE = 9;
 }
 
+let totalPages = 0;
+if (document.documentElement.clientWidth < 768) {
+  totalPages = 48;
+} else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
+  totalPages = 36;
+} else {
+  totalPages = 32;
+}
+
 // ================EVENT LISTENERS=================
 
 if (searchInput) {
@@ -65,7 +74,7 @@ async function fetchRecipeByTitle(title) {
 export function createAllRecipesMarkUp(allRecipesObj) {
   return allRecipesObj.results
     .map(({ title, description, preview, rating, _id }) => {
-      return `<li class="recipe-item" data-id=${_id} data-popup=''recepie'>
+      return `<li class="recipe-item">
         <a href="${preview}" class="recipe-link">
           <img src="${preview}" alt="${title}" class="recipe-image" />
           <div class="recipe-card-bg-cover">
@@ -92,7 +101,7 @@ export function createAllRecipesMarkUp(allRecipesObj) {
       </div>
     </div>
   </div>
-          <button type="button" class="open-recipe-btn">See recipe</button>
+          <button type="button" class="open-recipe-btn" data-id=${_id} data-popup="recepie">See recipe</button>
           </div>
           </div>
           </div>
@@ -157,6 +166,36 @@ async function renderSearchedRecipes(searchedTitle) {
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }
+
+// ===================PAGINATION=====================
+function createPaginationList(totalPages, page) {
+  let liTag = '';
+  let beforePages = page - 1;
+  let afterPages = page + 1;
+  let activeLi;
+
+  if (page > 1) {
+    liTag += `<li class="pag-item" ><span class="last-left"><<</span></li>
+    <li class="pag-item" onclick="createPaginationList(totalPages, ${page - 1})"><span class="prelast-left"><</span></li>`;
+  }
+
+  for (let pageLength = beforePages; pageLength < afterPages; pageLength += 1) {
+    if (page === pageLength) {
+      activeLi = 'active';
+    } else {
+      activeLi = '';
+    }
+    liTag += `<li class="numb pag-item ${activeLi}"><span>${pageLength}</span></li>`;
+  }
+
+  if (page < totalPages) {
+    liTag += `<li class="pag-item"><span class="prelast-right">></span></li>
+    <li class="pag-item"><span class="past-right">>></span></li>`;
+  }
+  pagList.innerHTML = liTag;
+}
+
+createPaginationList(totalPages, 5);
 
 // ================== MAIN ACTIONS ==================
 if (recipeList) {
