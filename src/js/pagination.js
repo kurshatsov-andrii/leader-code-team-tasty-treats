@@ -10,7 +10,7 @@ if (pagList) {
 
 function handlePagListClick(event) {
   if (!event.target.classList.contains('pag-item') || event.target.classList.contains('unactive')) {
-    //return;
+    return;
   }
 
   page = Number(event.target.textContent);
