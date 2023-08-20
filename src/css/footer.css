@@ -69,7 +69,10 @@ body.dark-theme .footer-black-text {
 
 body.dark-theme .footer-copyright {    
     color: var(--color-light-theme);
+    background-color: var(--color-black-text);
 }
+
+
 
 @media screen and (max-width: 480px) {
     .footer {
