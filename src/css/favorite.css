@@ -1,4 +1,69 @@
+.is-hidden {
+  display: none;
+}
+
 .favorite-wrap {
-    position: relative;
-    height: 100px;
+  position: relative;
+  height: 100px;
+}
+
+.favorites {
+  padding-top: 284px;
+  padding-bottom: 144px;
+}
+
+.fav-icon {
+  display: block;
+  margin: 0 auto 24px;
+}
+
+.favorites-text {
+  color: #050505;
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.29;
+}
+
+.fav-def-img {
+  display: none;
+  border-radius: 15px;
+}
+
+@media screen and (min-width: 768px) {
+  .favorites {
+    padding-top: 50px;
+    padding-bottom: 199px;
+  }
+
+  .fav-def-img {
+    width: 704px;
+    height: 356px;
+    display: block;
+    margin-bottom: 64px;
+  }
+
+  .fav-icon {
+    width: 97px;
+    height: 83px;
+    margin: 0 auto 32px;
+  }
+
+  .favorites-text {
+    margin: 0 auto;
+    width: 481px;
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .favorites {
+    padding-top: 40px;
+  }
+
+  .fav-def-img {
+    width: 1080px;
+    height: 356px;
+    display: block;
+  }
 }
