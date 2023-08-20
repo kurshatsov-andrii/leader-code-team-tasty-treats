@@ -1,5 +1,6 @@
 import axios from "axios"
-
+import Notify from "notiflix";
+// import { openPopupById } from '../js/custom-popup';
 const popularRecipes = document.querySelector('.popular-recipes-js');
 
 // Асинхронна функція для отримання популярних рецептів
@@ -18,30 +19,39 @@ async function getFetchPopularRecipes() {
 // Виклик асинхронної функції та вставка розмітки в DOM
 async function getPopularRecipes() {
   try {
-      const data = await getFetchPopularRecipes();
+    const data = await getFetchPopularRecipes();
+    
+    //перевірка чи приходить не пустий масив
+    if (Array.isArray(data) && data.length > 0) {
       const markup = createPopularRecipesMarkup(data);
       popularRecipes.insertAdjacentHTML('beforeend', markup);
+    } else {
+      Notify.info('No recipes available!')
+    }
   } catch (error) {
     Notify.failure(error.message);
   }
 }
 
-getPopularRecipes();
+if (popularRecipes) {
+  getPopularRecipes();
+}
 
 // Функція для створення розмітки популярних рецептів
 function createPopularRecipesMarkup(recipes) {
-    return recipes.map(({ title, description, preview }) => {
+    return recipes.map(({ title, description, preview, _id }) => {
         return `
-        <ul class="popular-recipes-list list">
-            <a class="popular-recipes-link" href="#">
-                <li class="popular-recipes-item">
-                <img class="popular-recipes-img" src="${preview}" alt="${title}">
-                <div class="popular-recipes-wraper">
+        <li class="popular-recipes-list list" data-id=${_id}>
+            <a class="popular-recipes-link" href="#!" >
+                <div class="popular-recipes-item">
+                  <img class="popular-recipes-img" src="${preview}" alt="${title}">
+                  <div class="popular-recipes-wraper">
                     <h3 class="popular-recipes-title">${title}</h3>
                     <p class="popular-recipes-description">${description}</p>
                 </div>
-            </li>
+            </div>
             </a>
-        </ul>`
+        </li>`
     }).join("");
 }
+// openPopupById("recepie");
