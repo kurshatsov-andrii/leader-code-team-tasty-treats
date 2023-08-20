@@ -34,3 +34,8 @@ function createAllCategoriesMarkup(categories) {
     
 }
 
+// const allCategoriesBtn = document.querySelector('.all-categories');
+// allCategoriesBtn.addEventListener('click', getAllRecipes);
+// getAllRecipes(event){
+
+// }

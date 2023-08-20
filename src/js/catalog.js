@@ -1,29 +1,71 @@
+import axios from 'axios';
+import _ from 'lodash';
+import Notiflix from 'notiflix';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+
 const recipeList = document.querySelector('.recipe-list');
+const searchInput = document.querySelector('.search-input');
+const pagList = document.querySelector('.pagination-list');
+const reset = document.querySelector('.reset-wrap');
+const allCategories = document.querySelector('.all-categories');
+
+// ==================VARIABLES================
+const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
 let PER_PAGE = 0;
 if (document.documentElement.clientWidth < 768) {
   PER_PAGE = 6;
-} else if (
-  document.documentElement.clientWidth >= 768 &&
-  document.documentElement.clientWidth < 1280
-) {
+} else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
   PER_PAGE = 8;
 } else {
   PER_PAGE = 9;
 }
 
-async function fetchAllRecipes() {
-  const response = await fetch(
-    `https://tasty-treats-backend.p.goit.global/api/recipes?limit=${PER_PAGE}`
-  );
+// ================EVENT LISTENERS=================
 
+if (searchInput) {
+  searchInput.addEventListener('input', _.debounce(handleSearchInput, 500));
+}
+
+function handleSearchInput(event) {
+  const searchedTitle = event.target.value.trim();
+  renderSearchedRecipes(searchedTitle);
+}
+
+if (reset) {
+  reset.addEventListener('click', handleResetClick);
+}
+
+function handleResetClick() {
+  searchInput.value = '';
+  renderAllRecipes();
+}
+
+if (allCategories) {
+  allCategories.addEventListener('click', handleAllCategoriesClick);
+}
+
+function handleAllCategoriesClick() {
+  searchInput.value = '';
+  renderAllRecipes();
+}
+
+// =================FETCH FUNCTIONS===================
+export async function fetchAllRecipes() {
+  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}`);
   return response;
 }
 
-function createAllRecipesMarkUp(allRecipesObj) {
+async function fetchRecipeByTitle(title) {
+  const response = await axios.get(`${BASE_URL}recipes?title=${title}`);
+  return response;
+}
+
+// ================= CREATE MARK-UP FUNCTIONS=================
+export function createAllRecipesMarkUp(allRecipesObj) {
   return allRecipesObj.results
-    .map(({ title, description, preview, rating }) => {
-      return `<li class="recipe-item">
+    .map(({ title, description, preview, rating, _id }) => {
+      return `<li class="recipe-item" data-id=${_id}>
         <a href="${preview}" class="recipe-link">
           <img src="${preview}" alt="${title}" class="recipe-image" />
           <div class="recipe-card-bg-cover">
@@ -62,35 +104,62 @@ function createAllRecipesMarkUp(allRecipesObj) {
     .join('');
 }
 
-async function renderAllRecipes() {
-  const response = await fetchAllRecipes();
-  const allRecipes = await response.json();
-
-  recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
-}
-
-renderAllRecipes();
-
-// HELPERS //
+// ===============HELPER FUNCTIONS============== //
 
 function formatDescription(description) {
   let result;
   let maxWidth = 0;
   if (document.documentElement.clientWidth < 768) {
     maxWidth = 98;
-  } else if (
-    document.documentElement.clientWidth >= 768 &&
-    document.documentElement.clientWidth < 1280
-  ) {
+  } else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
     maxWidth = 60;
   } else {
     maxWidth = 68;
   }
 
-  result =
-    description.length <= maxWidth
-      ? description
-      : description.slice(0, maxWidth) + ' ...';
+  result = description.length <= maxWidth ? description : description.slice(0, maxWidth) + ' ...';
 
   return result;
+}
+
+// ==============RENDER FUNCTIONS======================
+export async function renderAllRecipes() {
+  try {
+    const response = await fetchAllRecipes();
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const allRecipes = response.data;
+
+    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+async function renderSearchedRecipes(searchedTitle) {
+  try {
+    const response = await fetchRecipeByTitle(searchedTitle);
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const allRecipes = response.data;
+
+    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+// ================== MAIN ACTIONS ==================
+if (recipeList) {
+  renderAllRecipes();
 }

@@ -1,3 +1,8 @@
+body.dark-theme {
+  background: var(--color-dark-theme);
+  color: #fff;
+}
+
 .hero * {
   box-sizing: border-box;
 }
@@ -188,13 +193,8 @@ body.dark-theme .hero .swiper-pagination .swiper-pagination-bullet:before {
   background: var(--color-light-theme);
 }
 
-.hero
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active:before,
-body.dark-theme
-  .hero
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active:before {
+.hero .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active:before,
+body.dark-theme .hero .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active:before {
   background: var(--color-green);
 }
 
