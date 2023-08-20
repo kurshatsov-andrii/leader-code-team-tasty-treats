@@ -2,7 +2,7 @@ import Notiflix from 'notiflix';
 
 import axios from "axios";
 
-import { openPopupById } from '../js/custom-popup';
+// import { openPopupById } from '../js/custom-popup';
 import { functions } from 'lodash';
 
 
@@ -91,5 +91,5 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
 renderModalWindow()
 
 
-// openPopupById('recepie');
+openPopupById('recepie');
 // data-popup=''recepie';
