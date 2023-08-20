@@ -17,15 +17,19 @@ async function orderSend(e) {
   const formIsValid = formValidation(orderForm);
   if (formIsValid === true) {
     openPopupById('loading');
+    const formData = {
+      name: orderForm.name.value,
+      phone: orderForm.phone.value,
+      email: orderForm.email.value,
+      comment: orderForm.comment.value,
+    };
+    if (orderForm.comment.value === '') {
+      delete formData.comment;
+    }
     axios({
       method: 'POST',
       url: ORDERS_API,
-      data: {
-        name: orderForm.name.value,
-        phone: orderForm.phone.value,
-        email: orderForm.email.value,
-        comment: orderForm.comment.value,
-      },
+      data: formData,
       headers: {
         'Content-Type': 'application/json',
       },
