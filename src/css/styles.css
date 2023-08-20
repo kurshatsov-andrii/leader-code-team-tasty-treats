@@ -1,7 +1,7 @@
 @import url('./reset.css');
 /* Богдан Царук */
 @import url('./header.css');
-/*  */
+/* Богдан Царук */
 @import url('./mobile-menu.css');
 /* Руслан */
 @import url('./hero.css');
@@ -11,23 +11,24 @@
 @import url('./popular-recipes.css');
 /* Анна */
 @import url('./catalog.css');
-/*  */
+/* Андрій */
 @import url('./footer.css');
-/*  */
+/* Юрій */
 @import url('./modal-window-recipe.css');
 /* Руслан */
 @import url('./order.css');
-/*  */
+@import url('./custom-popup.css');
+/* Олег Юлій */
 @import url('./favorite.css');
 
 :root {
     --primary-font: 'Inter', sans-serif;
     --color-black-text: #050505;
-    --color-white-text: #F8F8F8;
+    --color-white-text: #f8f8f8;
     --color-dark-theme: #161616;
-    --color-light-theme: #ffffff;
-    --color-green: #9BB537;
-    --color-raiting: #EEA10C;
+    --color-light-theme: #f8f8f8;
+    --color-green: #9bb537;
+    --color-raiting: #eea10c;
     --bg-gradient: linear-gradient(rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7));
     --transform-hover-focus: 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -39,62 +40,113 @@ html {
 body {
     font-family: var(--primary-font);
     color: var(--color-black);
-    background-color: var(--color-white);
+    background-color: var(--color-light-theme);
+    font-family: var(--primary-font);
+    color: var(--color-black-text);
+    background-color: var(--color-light-theme);    
+}
+
+body .dark-theme {
+    background-color: var(--color-dark-theme);
 }
 
 .container {
-    padding-left: 15px;
-    padding-right: 15px;
     margin-left: auto;
     margin-right: auto;
 }
 
 /*-------CONTAINER < 375px-----------------*/
 @media screen and (max-width: 374px) {
-    .section {
+    .container {
+        padding-left: 15px;
+        padding-right: 15px;
+    }
+
+    /* .section {
         padding: 0;
         padding-top: 40px;
         padding-bottom: 40px;
-    }
+    } */
 }
 
 /*-------CONTAINER 375px-----------------*/
 @media screen and (min-width: 375px) {
     .container {
-        max-width: 365px;
+        max-width: 375px;
+        padding-left: 20px;
+        padding-right: 20px;
     }
 
-    .section {
+    .all-section-recepies {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;
+        }
+
+    .section-categories-popular {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 40px;        
+        }
+
+  /* .section {
         padding: 0;
         padding-top: 40px;
         padding-bottom: 40px;
-    }
+    } */
 }
 
 /*-------CONTAINER 768px-----------------*/
 @media screen and (min-width: 768px) {
     .container {
-        max-width: 734px;
+        max-width: 768px;
+        padding-left: 32px;
+        padding-right: 32px;
     }
 
-    .section {
+    .all-section-recepies {
+        display: flex;
+        gap: 32px;
+        padding: 0;
+        padding-bottom: 40px;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+
+    .section-categories-popular {
+        display: flex;
+        gap: 64px;
+        flex-direction: column;
+        margin-top: 24px;
+    }
+
+    /* .section {
         padding: 0;
         padding-top: 64px;
         padding-bottom: 64px;
-    }
+    } */
 }
 
 /*-------CONTAINER 1280px-----------------*/
 @media screen and (min-width: 1280px) {
     .container {
-        max-width: 1206px;
+        max-width: 1280px;
+        padding-left: 100px;
+        padding-right: 100px;    
     }
 
-    .section {
+.all-section-recepies {
+    padding-left: 100px;
+    padding-right: 100px;
+    gap: 64px;
+    flex-wrap: nowrap;
+}
+
+/* .section {
         padding: 0;
         padding-top: 80px;
         padding-bottom: 80px;
-    }
+    } */
 }
 
 /*-----------HIDDEN TEXT---------------------*/
@@ -112,16 +164,16 @@ body {
 }
 
 /*-----------GO TO TOP---------------------*/
-/* .go-top {
+.go-top {
     position: fixed;
     right: 50px;
     bottom: 50px;
     cursor: pointer;
     display: none;
     font-size: 20px;
-    color: var(--color-dark-green);
-    border: 1px solid var(--color-dark-green);
-    background-color: var(--color-white);
+    color: var(--color-white-text);
+    border: 1px solid var(--color-white-text);
+    background-color: var(--color-green);
     padding: 10px 10px;
     z-index: 100;
     border-radius: 8px;
@@ -130,10 +182,12 @@ body {
 
 .go-top:hover {
     color: var(--color-white);
-    background-color: var(--color-dark-green);
-    border: 1px solid var(--color-white);
+    background-color: var(--color-green);
+    border: 1px solid var(--color-white-text);
 }
 
 .go-top--show {
-    display: block;
-} */
+    display: block; 
+}
+
+

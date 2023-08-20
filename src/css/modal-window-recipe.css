@@ -13,3 +13,118 @@
         visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
 }
+
+.backdrop.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+  
+
+.modal-window {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 531px;
+    height: 905px;
+    background-color: #fcfcfc;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12),
+      0px 2px 1px rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+    padding: 32px;
+  }
+
+  .modal-close-btn {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  
+
+  .contacts-form-title {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 1.22;
+    text-align: center;
+    letter-spacing: 0.02em;
+    color: #050505;
+    text-transform: uppercase;
+  }
+
+  .video-recipe {
+    margin-top: 16px;
+    width: 467px;
+    height: 250px;
+    border-radius: 8px;
+    background: linear-gradient(0deg, rgba(5, 5, 5, 0.40) 0%, rgba(5, 5, 5, 0.40) 100%), lightgray -34.64px -20px / 109.993% 120% no-repeat;
+  }
+
+  .info-panel {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.tags {
+    
+}
+.tags-list {
+    margin-top: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.rating {
+}
+.time {
+}
+.ingredients {
+    margin-top: 32px;
+}
+
+.instructions-container{
+    margin-top: 32px;
+    width: 467px;
+    height: 162px;
+    color: rgba(5, 5, 5, 0.80);
+}
+.instructions-text {
+    
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 1.29;
+}
+.favorite-btn {
+    min-width: 156px;
+    height: 45px;
+    display: inline-flex;
+    padding: 14px 28px;
+    justify-content: center;
+    align-items: center;
+    background-color: #9BB537;
+    color: #F8F8F8;
+    font-family: Inter;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    cursor: pointer;
+    margin: 32px auto;
+    border: none;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
