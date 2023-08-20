@@ -1,18 +1,18 @@
 
-<div class="backdrop is-hidden">
-  <section class="modal-window">
-    <button type="button" data-modal-close class="modal-close-btn btn">
-      <svg class="modai-close-icon" width="24" height="24">
-        <use href="./images/icons.svg#icon-criss-cross"></use>
-      </svg>
-    </button>
+
+
+
+<div class="custom-popup" id="recepie">
+  <div class="custom-popup__content">
+    <button type="button" class="popup__close js-popup-close">close</button>
+    <!-- Тут код рецепта -->
     <div class="backend-info">
       <h2>Modal window recipe</h2>
       <div class="video-recipe"></div>
       <div class="info-panel">
         <div class="tags">
           <ul class="tags-list">
-  
+  <span class="tag-item"></span>
           </ul>
         </div>
   <div class="rating">
@@ -28,11 +28,10 @@
         </ul>
       </div>
       <p class="instructions"></p>
-
+      <button type="button" class="favorite-btn btn">Add to favorite</button>
     </div>
-    
-    <button type="button" class="favorite-btn btn">Add to favorite</button>
-  </section>
+    <!-- Тут код рецепта конец -->
+  </div>
 </div>
 
 
