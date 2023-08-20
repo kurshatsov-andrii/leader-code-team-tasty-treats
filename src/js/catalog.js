@@ -65,7 +65,7 @@ async function fetchRecipeByTitle(title) {
 export function createAllRecipesMarkUp(allRecipesObj) {
   return allRecipesObj.results
     .map(({ title, description, preview, rating, _id }) => {
-      return `<li class="recipe-item" data-id=${_id}>
+      return `<li class="recipe-item" data-id=${_id} data-popup=''recepie'>
         <a href="${preview}" class="recipe-link">
           <img src="${preview}" alt="${title}" class="recipe-image" />
           <div class="recipe-card-bg-cover">
@@ -92,8 +92,7 @@ export function createAllRecipesMarkUp(allRecipesObj) {
       </div>
     </div>
   </div>
-          <button type="button" class="open-recipe-btn">See recipe
-          </button>
+          <button type="button" class="open-recipe-btn">See recipe</button>
           </div>
           </div>
           </div>
