@@ -15,8 +15,8 @@
         width: 335px;
         height: 202px;
         overflow: hidden;
-        margin-bottom: 40px;
-        margin-top: 40px;
+        /* margin-bottom: 40px;
+        margin-top: 40px; */
     }
     .catalog-title-popular {
         /* margin-top: 4px; */
@@ -118,7 +118,7 @@
         /* margin-top: 32px; */
     }
     .catalog-title-popular {
-        margin-top: 4px;
+        /* margin-top: 4px; */
         margin-bottom: 32px;
         font-family: var(--primary-font);
         font-size: 18px;
@@ -211,7 +211,7 @@
         /* margin-top: 32px; */
     }
     .catalog-title-popular {
-        margin-top: 4px;
+        /* margin-top: 4px; */
         margin-bottom: 32px;
         font-family: var(--primary-font);
         font-size: 24px;
