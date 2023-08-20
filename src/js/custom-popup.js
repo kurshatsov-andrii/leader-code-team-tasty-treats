@@ -17,10 +17,7 @@ export function popupOpen(e) {
 }
 
 export function popupClose(e) {
-  if (
-    e.target.classList.contains('js-popup-close') ||
-    e.target.classList.contains('custom-popup')
-  ) {
+  if (e.target.classList.contains('js-popup-close') || e.target.classList.contains('custom-popup')) {
     closeOllPopups();
     setTimeout(() => {
       scrollbarReset();
@@ -44,8 +41,7 @@ export function closeOllPopups() {
 }
 
 export function scrollbarModify() {
-  const scrollbarWidth =
-    window.innerWidth - document.querySelector('main').offsetWidth;
+  const scrollbarWidth = window.innerWidth - document.querySelector('main').offsetWidth;
   body.style.paddingRight = scrollbarWidth + 'px';
 }
 
@@ -54,8 +50,10 @@ export function scrollbarReset() {
   body.classList.remove('locked');
 }
 
-export function alertError(text) {
-  const errorEl = document.querySelector('.js-error-text');
-  errorEl.innerHTML = text;
+export function alertError(title, subtitle) {
+  const errorTitle = document.querySelector('.js-error-title');
+  const errorSubtitle = document.querySelector('.js-error-text');
+  errorTitle.innerHTML = title;
+  errorSubtitle.innerHTML = subtitle;
   openPopupById('error');
 }
