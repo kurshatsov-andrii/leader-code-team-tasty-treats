@@ -1,6 +1,7 @@
 // import './js/header.js';
 import './js/hero.js';
 import './js/catalog.js';
+import './js/pagination.js';
 import './js/popular-recipes.js';
 import './js/all-categories.js';
 // import './js/favorites.js';
