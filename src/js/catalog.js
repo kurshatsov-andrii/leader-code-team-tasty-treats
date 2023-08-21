@@ -57,18 +57,18 @@ function handleAllCategoriesClick() {
   renderAllRecipes();
 }
 
-if (categoriesList) {
-  categoriesList.addEventListener('click', handleCategoriesListClick);
-}
+// if (categoriesList) {
+//   categoriesList.addEventListener('click', handleCategoriesListClick);
+// }
 
-function handleCategoriesListClick(event) {
-  if (!event.target.classList.contains('btn')) {
-    return;
-  }
-  console.log(event.target.innerText);
-  let pickedCategory = event.target.innerText;
-  renderRecipe(pickedCategory);
-}
+// function handleCategoriesListClick(event) {
+//   if (!event.target.classList.contains('btn')) {
+//     return;
+//   }
+//   console.log(event.target.innerText);
+//   let pickedCategory = event.target.innerText;
+//   renderRecipe(pickedCategory);
+// }
 
 // =================FETCH FUNCTIONS===================
 export async function fetchAllRecipes() {

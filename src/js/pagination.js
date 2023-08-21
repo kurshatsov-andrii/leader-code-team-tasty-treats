@@ -51,6 +51,7 @@ export function createPagination(category, title, totalPages) {
     pagination.on('afterMove', event => {
       const { page } = event;
 
+      console.log(pagination);
       if (title) {
         renderRecipeByTitlyPerPage(title, page);
       } else if (category) {

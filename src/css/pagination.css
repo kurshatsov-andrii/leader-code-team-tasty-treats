@@ -1,6 +1,6 @@
 .tui-pagination {
   height: 40px;
-  margin: 0 auto;
+  margin: 0 auto !important;
   line-height: normal;
   text-align: center;
   font-size: 0;
@@ -10,14 +10,23 @@
   border-radius: 50%;
 }
 
-.tui-pagination .tui-first,
-.tui-pagination .tui-prev,
-.tui-pagination .tui-next,
-.tui-pagination .tui-last,
-.tui-pagination .tui-prev-is-ellip,
-.tui-pagination .tui-next-is-ellip {
-  width: 40px;
-  height: 40px;
+body.dark-theme .tui-pagination .tui-page-btn {
+  color: #fff !important;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body.dark-theme .tui-pagination .tui-prev-is-ellip,
+body.dark-theme .tui-pagination .tui-next-is-ellip {
+  color: #ffffff !important;
+  background-color: #161616;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+body.dark-theme .tui-first,
+body.dark-theme .tui-prev,
+body.dark-theme .tui-next,
+body.dark-theme .tui-last {
+  border: none !important;
 }
 
 .custom-class-first,
@@ -39,6 +48,12 @@
   text-align: center;
 }
 
+body.dark-theme .tui-first-child,
+body.dark-theme .tui-last-child {
+  color: #fff;
+  background-color: #161616;
+}
+
 .custom-class-first.tui-is-disabled,
 .custom-class-prev.tui-is-disabled,
 .custom-class-last.tui-is-disabled,
@@ -56,18 +71,47 @@
 }
 
 .tui-pagination .tui-page-btn {
-  width: 40px !important;
-  height: 40px !important;
-  margin-left: 10px !important;
+  width: 36px !important;
+  height: 36px !important;
   color: #050505 !important;
   font-size: 18px !important;
   font-weight: 600 !important;
+  vertical-align: bottom !important;
   transition: background var(--transform-hover-focus);
+  display: inline-flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tui-pagination .tui-page-btn:not(:last-child) {
+  margin-right: 5px !important;
 }
 
 .tui-pagination .tui-page-btn:hover,
 .tui-pagination strong:hover {
   background: #9bb537 !important;
+}
+
+.tui-ico-first,
+.tui-ico-prev,
+.tui-ico-next,
+.tui-ico-last {
+  vertical-align: text-bottom !important;
+}
+
+.tui-pagination .tui-next {
+  margin-left: 0 !important;
+}
+
+@media screen and (min-width: 768px) {
+  .tui-pagination .tui-page-btn {
+    width: 40px !important;
+    height: 40px !important;
+    margin-left: 10px !important;
+  }
 }
 
 @media screen and (min-width: 1280px) {
