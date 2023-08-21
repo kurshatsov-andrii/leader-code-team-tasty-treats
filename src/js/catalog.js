@@ -2,6 +2,9 @@ import axios from 'axios';
 import _ from 'lodash';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { PER_PAGE } from './pagination';
+import { pagination } from './pagination';
+import { createPagination } from './pagination';
 
 const recipeList = document.querySelector('.recipe-list');
 const searchInput = document.querySelector('.search-input');
@@ -13,17 +16,6 @@ const categoriesList = document.querySelector('.categories-wrapper');
 // ==================VARIABLES================
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
-export let page = 1;
-
-let PER_PAGE = 0;
-if (document.documentElement.clientWidth < 768) {
-  PER_PAGE = 6;
-} else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
-  PER_PAGE = 8;
-} else {
-  PER_PAGE = 9;
-}
-
 export let totalPages = 0;
 if (document.documentElement.clientWidth < 768) {
   totalPages = 48;
@@ -33,6 +25,8 @@ if (document.documentElement.clientWidth < 768) {
   totalPages = 32;
 }
 
+let searchedTitle = '';
+
 // ================EVENT LISTENERS=================
 
 if (searchInput) {
@@ -40,7 +34,7 @@ if (searchInput) {
 }
 
 function handleSearchInput(event) {
-  const searchedTitle = event.target.value.trim();
+  searchedTitle = event.target.value.trim();
   renderSearchedRecipes(searchedTitle);
 }
 
@@ -50,6 +44,7 @@ if (reset) {
 
 function handleResetClick() {
   searchInput.value = '';
+  searchedTitle = '';
   renderAllRecipes();
 }
 
@@ -62,32 +57,42 @@ function handleAllCategoriesClick() {
   renderAllRecipes();
 }
 
-if (categoriesList) {
-  categoriesList.addEventListener('click', handleCategoriesListClick);
-}
+// if (categoriesList) {
+//   categoriesList.addEventListener('click', handleCategoriesListClick);
+// }
 
-function handleCategoriesListClick(event) {
-  if (!event.target.classList.contains('btn')) {
-    return;
-  }
-  console.log(event.target.innerText);
-  let pickedCategory = event.target.innerText;
-  renderRecipe(pickedCategory);
-}
+// function handleCategoriesListClick(event) {
+//   if (!event.target.classList.contains('btn')) {
+//     return;
+//   }
+//   console.log(event.target.innerText);
+//   let pickedCategory = event.target.innerText;
+//   renderRecipe(pickedCategory);
+// }
 
 // =================FETCH FUNCTIONS===================
 export async function fetchAllRecipes() {
-  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}&page=${page}`);
+  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}`);
   return response;
 }
 
 async function fetchRecipeByTitle(title) {
-  const response = await axios.get(`${BASE_URL}recipes?title=${title}`);
+  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}&title=${title}`);
+  return response;
+}
+
+async function fetchRecipeByTitlyPerPage(title, page) {
+  const response = await axios.get(`${BASE_URL}recipes?title=${title}&limit=${PER_PAGE}&page=${page}`);
   return response;
 }
 
 async function fetchRecipeByCategory(category) {
-  const response = await axios.get(`${BASE_URL}recipes?category=${category}`);
+  const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}`);
+  return response;
+}
+
+export async function fetchRecipesByPage(page) {
+  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}&page=${page}`);
   return response;
 }
 
@@ -133,6 +138,106 @@ export function createAllRecipesMarkUp(allRecipesObj) {
     .join('');
 }
 
+// ==============RENDER FUNCTIONS======================
+export async function renderAllRecipes() {
+  try {
+    const response = await fetchAllRecipes();
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const allRecipes = response.data;
+    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+
+    let totalPages = response.data.totalPages;
+    let category = '';
+    let title = '';
+    createPagination(category, title, totalPages);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+export async function renderSearchedRecipes(searchedTitle) {
+  try {
+    const response = await fetchRecipeByTitle(searchedTitle);
+
+    if (!response.data.totalPages) {
+      recipeList.innerHTML = '';
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const allRecipes = response.data;
+    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+
+    let totalPages = response.data.totalPages;
+    let category = '';
+    let title = searchedTitle;
+    if (totalPages > 1) {
+      createPagination(category, title, totalPages);
+    }
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+export async function renderRecipe(category) {
+  try {
+    const response = await fetchRecipeByCategory(category);
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+    const pickedRecipes = response.data;
+    recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+export async function renderRecipesOnPerPage(page) {
+  try {
+    const response = await fetchRecipesByPage(page);
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+    const pickedRecipes = response.data;
+    recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+export async function renderRecipeByTitlyPerPage(title, page) {
+  try {
+    let title = searchedTitle;
+
+    const response = await fetchRecipeByTitlyPerPage(title, page);
+    let totalPages = response.data.totalPages;
+    console.log(totalPages);
+    let category = '';
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const pickedRecipes = response.data;
+    recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
 // ===============HELPER FUNCTIONS============== //
 
 function formatDescription(description) {
@@ -157,59 +262,17 @@ function formatTitle(title) {
   return result;
 }
 
-// ==============RENDER FUNCTIONS======================
-export async function renderAllRecipes() {
-  try {
-    const response = await fetchAllRecipes();
-
-    if (!response.data.totalPages) {
-      Notiflix.Notify.failure('Ooops! No recipes found');
-      return;
-    }
-
-    const allRecipes = response.data;
-
-    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
-  } catch (error) {
-    console.log(error);
-    Notiflix.Notify.failure('Ooops! No recipes found');
-  }
-}
-
-async function renderSearchedRecipes(searchedTitle) {
-  try {
-    const response = await fetchRecipeByTitle(searchedTitle);
-
-    if (!response.data.totalPages) {
-      Notiflix.Notify.failure('Ooops! No recipes found');
-      return;
-    }
-
-    const allRecipes = response.data;
-
-    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
-  } catch (error) {
-    console.log(error);
-    Notiflix.Notify.failure('Ooops! No recipes found');
-  }
-}
-
-async function renderRecipe(category) {
-  try {
-    const response = await fetchRecipeByCategory(category);
-    if (!response.data.totalPages) {
-      Notiflix.Notify.failure('Ooops! No recipes found');
-      return;
-    }
-    const pickedRecipes = response.data;
-    recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
-  } catch (error) {
-    console.log(error);
-    Notiflix.Notify.failure('Ooops! No recipes found');
-  }
-}
-
 // ================== MAIN ACTIONS ==================
 if (recipeList) {
   renderAllRecipes();
 }
+
+// pagination.on('afterMove', event => {
+//   const { page } = event;
+//   /* тут делаешь запрос */
+//   // fetch(`https://some-site.com/products?page=${page}`)
+//   renderRecipesOnPerPage(page);
+
+//   console.log(page);
+// });
+// createPagination('Dessert', '', 288);

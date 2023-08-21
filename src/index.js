@@ -1,4 +1,4 @@
-// import './js/header.js';
+import './js/header.js';
 import './js/hero.js';
 import './js/catalog.js';
 import './js/pagination.js';

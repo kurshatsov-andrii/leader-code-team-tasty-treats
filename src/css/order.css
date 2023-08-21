@@ -42,6 +42,7 @@
 }
 
 .label__error.active {
+  background: none;
   height: 18px;
 }
 

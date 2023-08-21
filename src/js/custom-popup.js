@@ -2,6 +2,15 @@ const openPopupButtons = document.querySelectorAll('[data-popup]');
 const allCustomPopups = document.querySelectorAll('.custom-popup');
 export const body = document.querySelector('body');
 
+window.addEventListener('keyup', closePopupByEsc);
+
+function closePopupByEsc(e) {
+  if (e.key === 'Escape' && body.classList.contains('locked')) {
+    closeOllPopups();
+    scrollbarReset();
+  }
+}
+
 openPopupButtons.forEach(openBtn => {
   openBtn.addEventListener('click', popupOpen);
 });
@@ -19,9 +28,7 @@ export function popupOpen(e) {
 export function popupClose(e) {
   if (e.target.classList.contains('js-popup-close') || e.target.classList.contains('custom-popup')) {
     closeOllPopups();
-    setTimeout(() => {
-      scrollbarReset();
-    }, 400);
+    scrollbarReset();
   }
 }
 
@@ -46,8 +53,10 @@ export function scrollbarModify() {
 }
 
 export function scrollbarReset() {
-  body.style.paddingRight = '0px';
-  body.classList.remove('locked');
+  setTimeout(() => {
+    body.style.paddingRight = '0px';
+    body.classList.remove('locked');
+  }, 400);
 }
 
 export function alertError(title, subtitle) {
