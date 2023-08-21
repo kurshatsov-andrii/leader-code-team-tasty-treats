@@ -2,6 +2,15 @@
   position: relative;
   height: 100px;
 }
+
+button.active {
+  background-color: var(--color-green);
+  color: var(--color-light-theme);
+}
+
+body.dark-theme .all-categories {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
 body.dark-theme .btn {
   color: var(--color-light-theme);
 }
@@ -55,15 +64,15 @@ li {
   border: 1px solid rgba(5, 5, 5, 0.2);
   transition: var(--transform-hover-focus);
 }
-.all-categories:hover,
-.all-categories:focus {
+
+/* .all-categories:hover {
   background: var(--color-green);
   color: var(--color-light-theme);
-}
-.btn:hover,
-.btn:focus {
+} */
+/* .btn:hover {
   color: var(--color-green);
-}
+} */
+
 /*MOBILE < 375px*/
 @media screen and (max-width: 374px) {
 }
