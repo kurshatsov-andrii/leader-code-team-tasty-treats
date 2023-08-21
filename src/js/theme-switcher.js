@@ -1,39 +1,40 @@
 const body = document.querySelector('body');
-const switcher = document.getElementById('switch');
+const switcher = document.querySelectorAll('.switcher-input');
 
-switcherOnLoad();
-
-if (switcher) {
-  switcher.addEventListener('change', () => {
-    if (body.classList.contains('dark-theme')) {
-      body.classList.remove('dark-theme');
-      localStorage.theme = 'light';
-      uncheck();
-      return;
-    }
-    body.classList.add('dark-theme');
-    localStorage.theme = 'dark';
-    check();
+if (switcher.length > 0) {
+  swicherDefaultPosition();
+  switcher.forEach(switcherBtn => {
+    switcherBtn.addEventListener('change', swicherChange);
   });
 }
 
-function switcherOnLoad() {
-  if (localStorage.theme !== undefined && localStorage.theme !== 'light') {
+function swicherDefaultPosition() {
+  if (localStorage.theme === 'dark') {
     body.classList.add('dark-theme');
-  }
-  if (switcher) {
-    if (localStorage.theme === 'light') {
-      uncheck();
-      return;
-    }
     check();
   }
 }
 
+function swicherChange() {
+  if (!body.classList.contains('dark-theme')) {
+    body.classList.add('dark-theme');
+    localStorage.theme = 'dark';
+    check();
+    return;
+  }
+  body.classList.remove('dark-theme');
+  localStorage.theme = 'light';
+  uncheck();
+}
+
 function check() {
-  switcher.checked = true;
+  switcher.forEach(switcherBtn => {
+    switcherBtn.checked = true;
+  });
 }
 
 function uncheck() {
-  switcher.checked = false;
+  switcher.forEach(switcherBtn => {
+    switcherBtn.checked = false;
+  });
 }
