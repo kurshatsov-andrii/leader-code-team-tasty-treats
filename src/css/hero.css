@@ -16,16 +16,9 @@ body.dark-theme {
 }
 
 .hero {
-  background-color: var(--color-black);
   transition: var(--transform-hover-focus);
-  color: var(--color-black-text);
   font-style: normal;
   overflow: hidden;
-}
-
-body.dark-theme .hero {
-  background-color: var(--color-dark-theme);
-  color: var(--color-light-theme);
 }
 
 .hero .container {
@@ -242,6 +235,13 @@ body.dark-theme .hero .swiper-pagination .swiper-pagination-bullet.swiper-pagina
 .event.event--preview picture {
   max-width: 86.61%;
   height: auto;
+}
+
+.event.event--image picture {
+  width: 100%;
+  height: 120%;
+  transform: translate(0px, -10%);
+  top: -10%;
 }
 
 .event .info {
