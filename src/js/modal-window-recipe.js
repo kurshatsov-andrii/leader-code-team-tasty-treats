@@ -4,21 +4,33 @@ import axios from "axios";
 
 import { openPopupById } from '../js/custom-popup';
 import { closeOllPopups } from '../js/custom-popup';
-import { functions, lte } from 'lodash';
+
 
 
 
 const recipeModalWindow = document.querySelector(".backend-info");
 const popularRecipeList = document.querySelector('.popular-recipes-js');
-
+const addFavoriteBtn = document.querySelector('.favorite-btn');
 const recipeList = document.querySelector('.recipe-list');
+const favoriteArr = [];
+const KEY_FAVORITE = 'favorite';
 
-popularRecipeList.addEventListener('click', onPopularRecipe);
-recipeList.addEventListener('click', onCatalogRecipe);
+if (popularRecipeList) {
+  popularRecipeList.addEventListener('click', onPopularRecipe);
+}
+if (recipeList) {
+  recipeList.addEventListener('click', onCatalogRecipe);
+}
+
+if (addFavoriteBtn) {
+  addFavoriteBtn.addEventListener('click', onFavoriteBtn);
+}
+
 
 
 
 let recipeId = "";
+let recipes = {};
 
 function onCatalogRecipe(evt) {
   evt.preventDefault();
@@ -62,7 +74,7 @@ async function fetchRecipes(id) {
   async function renderModalWindow(id) {
     try {
     const response = await fetchRecipes(recipeId);
-    const recipes = await response.json();
+    recipes = await response.json();
     
     recipeModalWindow.innerHTML = modalWindowRecipesMarkUp(recipes);
 }
@@ -86,7 +98,7 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
       <div class="info-panel">
         <div class="tags">
           <ul class="tags-list">
-          ${tags.map((tag) => `<li><span class="tag-item"><p>#${tag}</p></span></li>`).join("")}
+          ${tags.map((tag) => `<li><span class="tag-item"><p class="modal-text">#${tag}</p></span></li>`).join("")}
           </ul>
         </div>
         
@@ -103,7 +115,7 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
             </div>
           </div>
         </div>
-        <p class="time">
+        <p class="modal-text">
   ${time} min
   </p>
       </div>
@@ -111,7 +123,7 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
       </div>
       <div class="ingredients">
         <ul class="ingredients-list">
-        ${ingredients.map(({name, measure} = ingredients) => `<li class="ingredients-item"><div><p>${name}</p></div><div><p>${measure}</p></div></li>`).join("")}
+        ${ingredients.map(({name, measure} = ingredients) => `<li class="ingredients-item"><div><p class="modal-text">${name}</p></div><div><pclass="modal-text">${measure}</pclass=></div></li>`).join("")}
         </ul>
       </div>
       <div class="instructions-container">
@@ -124,13 +136,18 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
     
 }
 
-// function onEscClose(evt) {
-//   if (evt.code === 'Escape') {
-//     closeOllPopups();
-//     document.removeEventListener('keydown', onEscClose);
-    
-//   }
-// }
+function onFavoriteBtn(evt) {
+
+  evt.preventDefault();
+
+  favoriteArr.push(recipes);
+  localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+  console.log(recipes);
+
+  
+}
+
+
 
 
 
