@@ -25,6 +25,8 @@ if (document.documentElement.clientWidth < 768) {
   totalPages = 32;
 }
 
+let searchedTitle = '';
+
 // ================EVENT LISTENERS=================
 
 if (searchInput) {
@@ -32,7 +34,7 @@ if (searchInput) {
 }
 
 function handleSearchInput(event) {
-  const searchedTitle = event.target.value.trim();
+  searchedTitle = event.target.value.trim();
   renderSearchedRecipes(searchedTitle);
 }
 
@@ -42,6 +44,7 @@ if (reset) {
 
 function handleResetClick() {
   searchInput.value = '';
+  searchedTitle = '';
   renderAllRecipes();
 }
 
@@ -74,12 +77,17 @@ export async function fetchAllRecipes() {
 }
 
 async function fetchRecipeByTitle(title) {
-  const response = await axios.get(`${BASE_URL}recipes?title=${title}`);
+  const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}&title=${title}`);
+  return response;
+}
+
+async function fetchRecipeByTitlyPerPage(title, page) {
+  const response = await axios.get(`${BASE_URL}recipes?title=${title}&limit=${PER_PAGE}&page=${page}`);
   return response;
 }
 
 async function fetchRecipeByCategory(category) {
-  const response = await axios.get(`${BASE_URL}recipes?category=${category}`);
+  const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}`);
   return response;
 }
 
@@ -128,30 +136,6 @@ export function createAllRecipesMarkUp(allRecipesObj) {
       </li>`;
     })
     .join('');
-}
-
-// ===============HELPER FUNCTIONS============== //
-
-function formatDescription(description) {
-  let result;
-  let maxWidth = 0;
-  if (document.documentElement.clientWidth < 768) {
-    maxWidth = 98;
-  } else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
-    maxWidth = 60;
-  } else {
-    maxWidth = 68;
-  }
-
-  result = description.length <= maxWidth ? description : description.slice(0, maxWidth) + ' ...';
-
-  return result;
-}
-
-function formatTitle(title) {
-  let result;
-  result = title.length <= 20 ? title : title.slice(0, 20) + ' ...';
-  return result;
 }
 
 // ==============RENDER FUNCTIONS======================
@@ -230,6 +214,52 @@ export async function renderRecipesOnPerPage(page) {
     console.log(error);
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
+}
+
+export async function renderRecipeByTitlyPerPage(title, page) {
+  try {
+    let title = searchedTitle;
+
+    const response = await fetchRecipeByTitlyPerPage(title, page);
+    let totalPages = response.data.totalPages;
+    console.log(totalPages);
+    let category = '';
+
+    if (!response.data.totalPages) {
+      Notiflix.Notify.failure('Ooops! No recipes found');
+      return;
+    }
+
+    const pickedRecipes = response.data;
+    recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+  } catch (error) {
+    console.log(error);
+    Notiflix.Notify.failure('Ooops! No recipes found');
+  }
+}
+
+// ===============HELPER FUNCTIONS============== //
+
+function formatDescription(description) {
+  let result;
+  let maxWidth = 0;
+  if (document.documentElement.clientWidth < 768) {
+    maxWidth = 98;
+  } else if (document.documentElement.clientWidth >= 768 && document.documentElement.clientWidth < 1280) {
+    maxWidth = 60;
+  } else {
+    maxWidth = 68;
+  }
+
+  result = description.length <= maxWidth ? description : description.slice(0, maxWidth) + ' ...';
+
+  return result;
+}
+
+function formatTitle(title) {
+  let result;
+  result = title.length <= 20 ? title : title.slice(0, 20) + ' ...';
+  return result;
 }
 
 // ================== MAIN ACTIONS ==================
