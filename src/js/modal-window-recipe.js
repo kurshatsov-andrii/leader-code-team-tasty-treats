@@ -10,15 +10,19 @@ import { functions, lte } from 'lodash';
 
 const recipeModalWindow = document.querySelector(".backend-info");
 const popularRecipeList = document.querySelector('.popular-recipes-js');
-
+const addFavoriteBtn = document.querySelector('.favorite-btn');
 const recipeList = document.querySelector('.recipe-list');
+const favoriteArr = [];
+const KEY_FAVORITE = 'favorite';
 
 popularRecipeList.addEventListener('click', onPopularRecipe);
 recipeList.addEventListener('click', onCatalogRecipe);
+addFavoriteBtn.addEventListener('click', onFavoriteBtn);
 
 
 
 let recipeId = "";
+let recipes = {};
 
 function onCatalogRecipe(evt) {
   evt.preventDefault();
@@ -62,7 +66,7 @@ async function fetchRecipes(id) {
   async function renderModalWindow(id) {
     try {
     const response = await fetchRecipes(recipeId);
-    const recipes = await response.json();
+    recipes = await response.json();
     
     recipeModalWindow.innerHTML = modalWindowRecipesMarkUp(recipes);
 }
@@ -124,13 +128,18 @@ const addHtml = `<h2>${title.toUpperCase()}</h2>
     
 }
 
-// function onEscClose(evt) {
-//   if (evt.code === 'Escape') {
-//     closeOllPopups();
-//     document.removeEventListener('keydown', onEscClose);
-    
-//   }
-// }
+function onFavoriteBtn(evt) {
+
+  evt.preventDefault();
+
+  favoriteArr.push(recipes);
+  localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
+  console.log(recipes);
+
+  
+}
+
+
 
 
 
