@@ -21,7 +21,7 @@ import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { recipeList } from '../js/catalog';
 
-const recipeList = document.querySelector('.recipe-list');
+//const recipeList = document.querySelector('.recipe-list');
 const searchInput = document.querySelector('.search-input');
 const reset = document.querySelector('.reset-wrap');
 const allCategories = document.querySelector('.all-categories');
