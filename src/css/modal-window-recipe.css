@@ -125,8 +125,7 @@
 
 .instructions-container {
   margin-top: 32px;
-  max-width: 467px;
-  min-height: 162px;
+  max-width: 467px;  
   color: rgba(5, 5, 5, 0.8);
 }
 .instructions-text {
