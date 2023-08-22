@@ -1,3 +1,8 @@
+body.dark-theme {
+  background: var(--color-dark-theme);
+  color: #fff;
+}
+
 .hero * {
   box-sizing: border-box;
 }
@@ -92,7 +97,7 @@ body.dark-theme .hero {
 
 @media screen and (min-width: 1280px) {
   .hero {
-    padding: 160px 0px 50px 0px;
+    padding: 100px 0px 50px 0px;
   }
   .hero .container {
     max-width: 1080px;
@@ -102,7 +107,7 @@ body.dark-theme .hero {
 
 @media screen and (min-width: 768px) and (max-width: 1279px) {
   .hero {
-    padding: 140px 0px 40px 0px;
+    padding: 92px 0px 40px 0px;
   }
   .hero .container {
     max-width: 768px;
@@ -116,7 +121,7 @@ body.dark-theme .hero {
 
 @media screen and (max-width: 767px) {
   .hero {
-    padding: 138px 0px 40px 0px;
+    padding: 84px 0px 40px 0px;
   }
   .hero .container {
     max-width: 375px;
@@ -188,13 +193,8 @@ body.dark-theme .hero .swiper-pagination .swiper-pagination-bullet:before {
   background: var(--color-light-theme);
 }
 
-.hero
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active:before,
-body.dark-theme
-  .hero
-  .swiper-pagination
-  .swiper-pagination-bullet.swiper-pagination-bullet-active:before {
+.hero .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active:before,
+body.dark-theme .hero .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active:before {
   background: var(--color-green);
 }
 

@@ -15,6 +15,7 @@ const recipeList = document.querySelector('.recipe-list');
 const favoriteArr = [];
 const KEY_FAVORITE = 'favorite';
 
+
 if (popularRecipeList) {
   popularRecipeList.addEventListener('click', onPopularRecipe);
 }

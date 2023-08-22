@@ -2,7 +2,31 @@
   position: relative;
   height: 100px;
 }
-
+body.dark-theme .btn {
+  color: var(--color-light-theme);
+}
+body.dark-theme .all-categories {
+  color: var(--color-light-theme);
+}
+body.dark-theme .btn:hover {
+  color: var(--color-green);
+}
+body.dark-theme .btn:focus {
+  color: var(--color-green);
+}
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(5, 5, 5, 0.18);
+  box-shadow: inset 1px 1px 10px #f3faf7;
+  border-radius: 12px;
+}
+/* scrooll для Mozilla Firefox */
+.categories-container {
+  scrollbar-color: rgba(5, 5, 5, 0.18);
+  scrollbar-width: thin;
+}
 li {
   list-style-type: none;
 }
@@ -14,7 +38,11 @@ li {
   letter-spacing: 0em;
   text-align: left;
   transition: var(--transform-hover-focus);
+  border: none;
+  width: 100%;
+  height: 100%;
 }
+
 .all-categories {
   font-family: --primary-font();
   font-weight: 500;
@@ -32,12 +60,18 @@ li {
   background: var(--color-green);
   color: var(--color-light-theme);
 }
-
+.btn:hover,
+.btn:focus {
+  color: var(--color-green);
+}
 /*MOBILE < 375px*/
 @media screen and (max-width: 374px) {
 }
 /*MOBILE*/
 @media screen and (max-width: 767px) {
+  .categories-item:not(:last-child) {
+    margin-bottom: 18px;
+  }
   .all-categories {
     top: 775px;
     left: 20px;
@@ -47,7 +81,6 @@ li {
   .btn {
     font-size: 14px;
     line-height: 18px;
-    gap: 18px;
   }
   .categories-container {
     width: 326px;
@@ -75,7 +108,9 @@ li {
   .btn {
     font-size: 16px;
     line-height: 20px;
-    gap: 24px;
+  }
+  .categories-item:not(:last-child) {
+    margin-bottom: 24px;
   }
   .categories-container {
     width: 176px;
