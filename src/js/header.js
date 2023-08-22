@@ -1,28 +1,36 @@
-(() => {
-  const mobileMenu = document.querySelector('.js-menu-container');
-  const openMenuBtn = document.querySelector('.js-open-menu');
-  const closeMenuBtn = document.querySelector('.js-close-menu');
+const burger = document.querySelector('.js-open-menu');
+const menuLinks = document.querySelectorAll('.nav-link');
+const burgerMenu = document.querySelector('.mobil-menu-wrapper');
+const currentPath = window.location.pathname;
 
-  const toggleMenu = () => {
-    const isMenuOpen =
-      openMenuBtn.getAttribute('aria-expanded') === 'true' || false;
-    openMenuBtn.setAttribute('aria-expanded', !isMenuOpen);
-    mobileMenu.classList.toggle('is-open');
+markCurrentLink();
 
-    const scrollLockMethod = !isMenuOpen
-      ? 'disableBodyScroll'
-      : 'enableBodyScroll';
-    bodyScrollLock[scrollLockMethod](document.body);
-  };
+function markCurrentLink() {
+  if (menuLinks.length > 0 && currentPath !== '/') {
+    menuLinks.forEach(link => {
+      link.classList.remove('current');
+      if (link.getAttribute('href') === currentPath) {
+        link.classList.add('current');
+      }
+    });
+  }
+}
 
-  openMenuBtn.addEventListener('click', toggleMenu);
-  closeMenuBtn.addEventListener('click', toggleMenu);
+burger.addEventListener('click', openBurgerMenu);
+burgerMenu.addEventListener('click', menuOnClick);
 
-  // Close the mobile menu on wider screens if the device orientation changes
-  window.matchMedia('(min-width: 768px)').addEventListener('change', e => {
-    if (!e.matches) return;
-    mobileMenu.classList.remove('is-open');
-    openMenuBtn.setAttribute('aria-expanded', false);
-    bodyScrollLock.enableBodyScroll(document.body);
-  });
-})();
+function openBurgerMenu() {
+  burgerMenu.classList.add('is-open');
+  document.body.classList.add('locked');
+}
+
+function menuOnClick(e) {
+  if (e.target.classList.contains('mobil-menu-wrapper') || e.target.classList.contains('js-close-menu')) {
+    closeBurgerMenu();
+  }
+}
+
+function closeBurgerMenu() {
+  burgerMenu.classList.remove('is-open');
+  document.body.classList.remove('locked');
+}
