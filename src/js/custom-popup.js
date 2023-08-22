@@ -43,7 +43,14 @@ export function openPopupById(id) {
 
 export function closeOllPopups() {
   allCustomPopups.forEach(popup => {
-    popup.classList.remove('is-open');
+    if (popup.classList.contains('is-open')) {
+      if (popup.id === 'recepie') {
+        setTimeout(() => {
+          popup.querySelector('.js-backend-info').innerHTML = '';
+        }, 350);
+      }
+      popup.classList.remove('is-open');
+    }
   });
 }
 

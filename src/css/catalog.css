@@ -173,6 +173,10 @@ body.dark-theme .reset-text {
   cursor: pointer;
 }
 
+.icon-heart path {
+  pointer-events: none;
+}
+
 .icon-heart:hover,
 .icon-heart:focus {
   fill: rgba(248, 248, 248, 1);
