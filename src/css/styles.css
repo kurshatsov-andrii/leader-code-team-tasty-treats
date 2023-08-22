@@ -21,6 +21,7 @@
 @import url('./custom-popup.css');
 /* Олег Юлій */
 @import url('./favorite.css');
+@import url('./favorite-cards.css');
 
 :root {
   --primary-font: 'Inter', sans-serif;
