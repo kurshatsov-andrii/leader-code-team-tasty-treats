@@ -89,7 +89,6 @@ li {
   .all-categories {
     top: 775px;
     left: 20px;
-    gap: 10px;
     margin-bottom: 24px;
   }
   .btn {
@@ -101,7 +100,6 @@ li {
     height: 198px;
     top: 849px;
     left: 20px;
-    gap: 254px;
     overflow: auto;
   }
   .wrapper-categories {
@@ -116,7 +114,6 @@ li {
   .all-categories {
     top: 1049px;
     left: 32px;
-    gap: 10px;
     margin-bottom: 30px;
   }
   .btn {
@@ -131,13 +128,11 @@ li {
     height: 416px;
     top: 1129px;
     left: 32px;
-    gap: 58px;
     overflow: auto;
   }
   .wrapper-categories {
     width: 110px;
     height: 416px;
-    gap: 24px;
   }
 }
 
