@@ -1,12 +1,12 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { createAllRecipesMarkUp } from '../js/catalog';
-import { PER_PAGE } from '../js/pagination';
-import { searchInput, recipeList } from '../js/catalog';
-import { createPagination } from '../js/pagination';
-import { paginationWrap } from '../js/catalog';
-import { recipeList } from '../js/catalog';
+import { createAllRecipesMarkUp } from './catalog';
+import { PER_PAGE } from './pagination';
+import { searchInput, recipeList } from './catalog';
+import { createPagination } from './pagination';
+import { paginationWrap } from './catalog';
+import { recipeList } from './catalog';
 
 const categoryContainer = document.querySelector('all-categories-js');
 const categoriesAll = document.querySelector('.categories-wrapper');

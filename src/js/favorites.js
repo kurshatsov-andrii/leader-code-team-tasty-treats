@@ -20,7 +20,7 @@ import _ from 'lodash';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-//const recipeList = document.querySelector('.recipe-list');
+const recipeList = document.querySelector('.recipe-list');
 const searchInput = document.querySelector('.search-input');
 const reset = document.querySelector('.reset-wrap');
 const allCategories = document.querySelector('.all-categories');

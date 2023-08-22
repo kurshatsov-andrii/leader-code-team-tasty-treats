@@ -2,10 +2,10 @@ import axios from 'axios';
 import _ from 'lodash';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { PER_PAGE } from '../js/pagination';
-import { pagination } from '../js/pagination';
-import { createPagination } from '../js/pagination';
-import { allCategories } from '../js/all-categories.js';
+import { PER_PAGE } from './pagination';
+import { pagination } from './pagination';
+import { createPagination } from './pagination';
+import { allCategories } from './all-categories';
 
 export const recipeList = document.querySelector('.recipe-list');
 export const searchInput = document.querySelector('.search-input');
