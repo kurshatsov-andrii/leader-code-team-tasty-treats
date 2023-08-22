@@ -5,11 +5,12 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { PER_PAGE } from '../js/pagination';
 import { pagination } from '../js/pagination';
 import { createPagination } from '../js/pagination';
+import { allCategories } from '../js/all-categories.js';
 
 export const recipeList = document.querySelector('.recipe-list');
 export const searchInput = document.querySelector('.search-input');
 const reset = document.querySelector('.reset-wrap');
-const allCategories = document.querySelector('.all-categories');
+//const allCategories = document.querySelector('.all-categories');
 const categoriesList = document.querySelector('.categories-wrapper');
 export const paginationWrap = document.querySelector('.tui-pagination');
 

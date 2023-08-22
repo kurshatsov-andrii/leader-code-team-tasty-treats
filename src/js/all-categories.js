@@ -11,7 +11,7 @@ const categoryContainer = document.querySelector('all-categories-js');
 const categoriesAll = document.querySelector('.categories-wrapper');
 const btnCategory = document.querySelector('.btn-all');
 const recipeList = document.querySelector('.recipe-list');
-const allCategories = document.querySelector('.all-categories');
+export const allCategories = document.querySelector('.all-categories');
 const blokCategory = document.querySelector('.categories-container');
 const itemCat = document.querySelector('.categories-item');
 
