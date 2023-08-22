@@ -5,7 +5,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { PER_PAGE } from './pagination';
 import { pagination } from './pagination';
 import { createPagination } from './pagination';
-import { allCategories } from './all-categories';
+import { allCategories, searchedCategory } from './all-categories';
 
 export const recipeList = document.querySelector('.recipe-list');
 export const searchInput = document.querySelector('.search-input');
