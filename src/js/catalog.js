@@ -3,7 +3,7 @@ import _ from 'lodash';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 import { PER_PAGE } from '../js/pagination';
-import { pagination } from './pagination';
+import { pagination } from '../js/pagination';
 import { createPagination } from '../js/pagination';
 
 export const recipeList = document.querySelector('.recipe-list');
