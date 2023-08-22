@@ -6,11 +6,12 @@ import { PER_PAGE } from '../js/pagination';
 import { searchInput, recipeList } from '../js/catalog';
 import { createPagination } from '../js/pagination';
 import { paginationWrap } from '../js/catalog';
+import { recipeList } from '../js/catalog';
 
 const categoryContainer = document.querySelector('all-categories-js');
 const categoriesAll = document.querySelector('.categories-wrapper');
 const btnCategory = document.querySelector('.btn-all');
-const recipeList = document.querySelector('.recipe-list');
+//const recipeList = document.querySelector('.recipe-list');
 export const allCategories = document.querySelector('.all-categories');
 const blokCategory = document.querySelector('.categories-container');
 const itemCat = document.querySelector('.categories-item');
