@@ -1,6 +1,14 @@
 import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
-import { renderAllRecipes, renderRecipesOnPerPage, renderRecipe, renderRecipeByTitlyPerPage } from './catalog';
+import {
+  renderAllRecipes,
+  renderRecipesOnPerPage,
+  renderRecipe,
+  renderRecipeByTitlePerPage,
+  searchedTitle,
+  searchedCategory,
+  renderRecipeByCategoryPerPage,
+} from './catalog';
 
 const paginationElement = document.getElementById('pagination');
 const recipeList = document.querySelector('.recipe-list');
@@ -47,18 +55,16 @@ export function createPagination(category, title, totalPages) {
     },
   });
 
-  if (totalPages > 1) {
-    pagination.on('afterMove', event => {
-      const { page } = event;
-
-      console.log(pagination);
-      if (title) {
-        renderRecipeByTitlyPerPage(title, page);
-      } else if (category) {
-        renderRecipe(category);
-      } else {
-        renderRecipesOnPerPage(page);
-      }
-    });
-  }
+  pagination.on('afterMove', event => {
+    const { page } = event;
+    let title = searchedTitle;
+    let category = searchedCategory;
+    if (title) {
+      renderRecipeByTitlePerPage(title, page);
+    } else if (category) {
+      renderRecipeByCategoryPerPage(category, page);
+    } else {
+      renderRecipesOnPerPage(page);
+    }
+  });
 }

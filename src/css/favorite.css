@@ -24,6 +24,10 @@
   line-height: 1.29;
 }
 
+body.dark-theme .favorites-text {
+  color: #ffffff;
+}
+
 .fav-def-img {
   display: none;
   border-radius: 15px;

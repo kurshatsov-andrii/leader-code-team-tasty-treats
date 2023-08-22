@@ -33,6 +33,7 @@ body.dark-theme .search-input-title {
 
 body.dark-theme .search-input {
   border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.5);
   background-color: #161616;
 }
 
@@ -143,6 +144,7 @@ body.dark-theme .reset-text {
   height: 100%;
   border-radius: 8px;
   cursor: default;
+  object-fit: cover;
 }
 
 .recipe-card-bg-cover {
