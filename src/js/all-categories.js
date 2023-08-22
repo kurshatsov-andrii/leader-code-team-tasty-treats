@@ -1,13 +1,22 @@
 import axios from "axios"
 import { Notify } from "notiflix";
 import { createAllRecipesMarkUp } from "./catalog"
+import { PER_PAGE } from './pagination';
 
+
+const categoryContainer = document.querySelector('all-categories-js');
 const categoriesAll = document.querySelector('.categories-wrapper');
 const btnCategory = document.querySelector(".btn");
 const recipeList = document.querySelector('.recipe-list');
+const allCategories = document.querySelector('.all-categories');
+const blokCategory = document.querySelector('.categories-container');
+const itemCat = document.querySelector('.categories-item');
 
+
+//------
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
-//-----
+
+//------
 async function getFetchCategories() {
   try {
       const response = await axios.get(`${BASE_URL}categories`);
@@ -31,9 +40,9 @@ if (categoriesAll) {
 }
 //------
 function createAllCategoriesMarkup(categories) {
-    return categories.map(({ id, name }) => {
+    return categories.map(({ _id, name }) => {
         return `
-        <li class="categories-item" data-id=${id}>
+        <li class="categories-item" data-id=${_id}>
         <button class="btn">${name}</button>
         </li>`
     }).join("");  
@@ -44,6 +53,7 @@ function createAllCategoriesMarkup(categories) {
 if (categoriesAll) {
   categoriesAll.addEventListener('click', handleCategoriesListClick);
 }
+
 function handleCategoriesListClick(event) {
   if (!event.target.classList.contains('btn')) {
     return;
@@ -54,7 +64,7 @@ function handleCategoriesListClick(event) {
 }
 
 async function fetchRecipeByCategory(category) {
-  const response = await axios.get(`${BASE_URL}recipes?category=${category}`);
+const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}`);
   return response;
 }
 
@@ -72,3 +82,35 @@ async function renderRecipe(category) {
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }
+// //////////////////////////////////////////////////////
+
+
+
+
+
+// categoryContainer.addEventListener('click', handleBtnClick);
+// let clicked = null;
+// function handleBtnClick (event) {
+// const Btn = event.target;
+// clicked = Btn
+//   if (Btn) {
+//     Btn.classList.remove('active');
+//   }
+    
+//   if (Btn === allCategories) {
+//     removeActiveCategoryBtn();
+//   }
+//   else { allCategories.classList.remove('active'); }
+//   Btn.classList.remove('active');
+// }
+
+// function removeActiveCategoryBtn() {
+//   const buttons= itemCat.querySelectorAll('button')
+//   buttons.forEach(button => {
+//    button.classList.remove('active') 
+//   })
+   
+// }
+
+
+
