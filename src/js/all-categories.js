@@ -1,11 +1,18 @@
 import axios from "axios"
 import { Notify } from "notiflix";
 import { createAllRecipesMarkUp } from "./catalog"
-const active = document.querySelector('.active');
+import { PER_PAGE } from './pagination';
+
+
+const categoryContainer = document.querySelector('all-categories-js');
 const categoriesAll = document.querySelector('.categories-wrapper');
 const btnCategory = document.querySelector(".btn");
 const recipeList = document.querySelector('.recipe-list');
 const allCategories = document.querySelector('.all-categories');
+const blokCategory = document.querySelector('.categories-container');
+const itemCat = document.querySelector('.categories-item');
+
+
 //------
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
 
@@ -47,19 +54,17 @@ if (categoriesAll) {
   categoriesAll.addEventListener('click', handleCategoriesListClick);
 }
 
-
 function handleCategoriesListClick(event) {
   if (!event.target.classList.contains('btn')) {
     return;
   }
   console.log(event.target.innerText);
   let pickedCategory = event.target.innerText;
-  event.target.classList.add("active")
   renderRecipe(pickedCategory);
 }
 
 async function fetchRecipeByCategory(category) {
-  const response = await axios.get(`${BASE_URL}recipes?category=${category}`);
+const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}`);
   return response;
 }
 
@@ -77,17 +82,35 @@ async function renderRecipe(category) {
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }
-// _____
-const handleClick = () => {
-  console.log("click event listener callback");
-};
+// //////////////////////////////////////////////////////
 
-addListenerBtn.addEventListener("click", () => {
-  btn.addEventListener("click", handleClick);
-  console.log("click event listener was added to btn");
-});
 
-removeListenerBtn.addEventListener("click", () => {
-  btn.removeEventListener("click", handleClick);
-  console.log("click event listener was removed from btn");
-});
+
+
+
+// categoryContainer.addEventListener('click', handleBtnClick);
+// let clicked = null;
+// function handleBtnClick (event) {
+// const Btn = event.target;
+// clicked = Btn
+//   if (Btn) {
+//     Btn.classList.remove('active');
+//   }
+    
+//   if (Btn === allCategories) {
+//     removeActiveCategoryBtn();
+//   }
+//   else { allCategories.classList.remove('active'); }
+//   Btn.classList.remove('active');
+// }
+
+// function removeActiveCategoryBtn() {
+//   const buttons= itemCat.querySelectorAll('button')
+//   buttons.forEach(button => {
+//    button.classList.remove('active') 
+//   })
+   
+// }
+
+
+
