@@ -72,7 +72,6 @@ async function renderModalWindow(id) {
 
 function modalWindowRecipesMarkUp(obj) {
   const { title, instructions, youtube, ingredients, rating, tags, time, preview } = obj;
-  console.log(youtube);
   const addHtml = `
       <h2 class="js-recepie-popup-title">${title.toUpperCase()}</h2>
       <div class="video-recipe">
