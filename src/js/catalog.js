@@ -6,12 +6,12 @@ import { PER_PAGE } from './pagination';
 import { pagination } from './pagination';
 import { createPagination } from './pagination';
 
-const recipeList = document.querySelector('.recipe-list');
-const searchInput = document.querySelector('.search-input');
+export const recipeList = document.querySelector('.recipe-list');
+export const searchInput = document.querySelector('.search-input');
 const reset = document.querySelector('.reset-wrap');
 const allCategories = document.querySelector('.all-categories');
 const categoriesList = document.querySelector('.categories-wrapper');
-const paginationWrap = document.querySelector('.tui-pagination');
+export const paginationWrap = document.querySelector('.tui-pagination');
 
 // ==================VARIABLES================
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
@@ -26,7 +26,7 @@ if (document.documentElement.clientWidth < 768) {
 }
 
 export let searchedTitle = '';
-export let searchedCategory = '';
+// export let searchedCategory = '';
 
 // ================EVENT LISTENERS=================
 
@@ -37,6 +37,12 @@ if (searchInput) {
 function handleSearchInput(event) {
   searchedTitle = event.target.value.trim();
   renderSearchedRecipes(searchedTitle);
+
+  // Забираємо виділення з кнопки категорії
+  const previousActiveBtn = document.querySelector('.category-btn-active');
+  if (previousActiveBtn) {
+    previousActiveBtn.classList.remove('category-btn-active');
+  }
 }
 
 if (reset) {
@@ -46,7 +52,17 @@ if (reset) {
 function handleResetClick() {
   searchInput.value = '';
   searchedTitle = '';
+  searchedCategory = '';
+  if (paginationWrap.classList.contains('is-hidden')) {
+    paginationWrap.classList.remove('is-hidden');
+  }
   renderAllRecipes();
+
+  // Забираємо виділення з кнопки категорії
+  const previousActiveBtn = document.querySelector('.category-btn-active');
+  if (previousActiveBtn) {
+    previousActiveBtn.classList.remove('category-btn-active');
+  }
 }
 
 if (allCategories) {
@@ -58,18 +74,18 @@ function handleAllCategoriesClick() {
   renderAllRecipes();
 }
 
-if (categoriesList) {
-  categoriesList.addEventListener('click', handleCategoriesListClick);
-}
+// if (categoriesList) {
+//   categoriesList.addEventListener('click', handleCategoriesListClick);
+// }
 
-function handleCategoriesListClick(event) {
-  if (!event.target.classList.contains('btn')) {
-    return;
-  }
-  searchInput.value = '';
-  searchedCategory = event.target.innerText;
-  console.log(searchedCategory);
-}
+// function handleCategoriesListClick(event) {
+//   if (!event.target.classList.contains('btn')) {
+//     return;
+//   }
+//   searchInput.value = '';
+//   searchedCategory = event.target.innerText;
+//   console.log(searchedCategory);
+// }
 
 // =================FETCH FUNCTIONS===================
 export async function fetchAllRecipes() {
@@ -87,15 +103,15 @@ async function fetchRecipeByTitlePerPage(title, page) {
   return response;
 }
 
-async function fetchRecipeByCategory(category) {
-  const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}&page=${page}`);
-  return response;
-}
+// async function fetchRecipeByCategory(category) {
+//   const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}&page=${page}`);
+//   return response;
+// }
 
-async function fetchRecipeByCategoryPerPage(category, page) {
-  const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}&page=${page}`);
-  return response;
-}
+// async function fetchRecipeByCategoryPerPage(category, page) {
+//   const response = await axios.get(`${BASE_URL}recipes?category=${category}&limit=${PER_PAGE}&page=${page}`);
+//   return response;
+// }
 
 export async function fetchRecipesByPage(page) {
   const response = await axios.get(`${BASE_URL}recipes?limit=${PER_PAGE}&page=${page}`);
@@ -200,32 +216,32 @@ export async function renderSearchedRecipes(searchedTitle) {
   }
 }
 
-export async function renderRecipesByCategory(category) {
-  try {
-    const response = await fetchRecipeByCategory(category);
-    if (!response.data.totalPages) {
-      recipeList.innerHTML = '';
-      Notiflix.Notify.failure('Ooops! No recipes found');
-      paginationWrap.classList.add('is-hidden');
-      return;
-    }
+// export async function renderRecipesByCategory(category) {
+//   try {
+//     const response = await fetchRecipeByCategory(category);
+//     if (!response.data.totalPages) {
+//       recipeList.innerHTML = '';
+//       Notiflix.Notify.failure('Ooops! No recipes found');
+//       paginationWrap.classList.add('is-hidden');
+//       return;
+//     }
 
-    const allRecipes = response.data;
-    recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
+//     const allRecipes = response.data;
+//     recipeList.innerHTML = createAllRecipesMarkUp(allRecipes);
 
-    let totalPages = response.data.totalPages;
-    let category = searchedCategory;
-    let title = '';
-    console.log(title);
-    console.log(response.data.totalPages);
-    if (totalPages > 1) {
-      createPagination(category, title, totalPages);
-      paginationWrap.classList.remove('is-hidden');
-    } else {
-      paginationWrap.classList.add('is-hidden');
-    }
-  } catch (error) {}
-}
+//     let totalPages = response.data.totalPages;
+//     let category = searchedCategory;
+//     let title = '';
+//     console.log(title);
+//     console.log(response.data.totalPages);
+//     if (totalPages > 1) {
+//       createPagination(category, title, totalPages);
+//       paginationWrap.classList.remove('is-hidden');
+//     } else {
+//       paginationWrap.classList.add('is-hidden');
+//     }
+//   } catch (error) {}
+// }
 
 export async function renderRecipeByTitlePerPage(title, page) {
   try {
@@ -244,22 +260,22 @@ export async function renderRecipeByTitlePerPage(title, page) {
   }
 }
 
-export async function renderRecipeByCategoryPerPage(category, page) {
-  try {
-    const response = await fetchRecipeByCategoryPerPage(category, page);
+// export async function renderRecipeByCategoryPerPage(category, page) {
+//   try {
+//     const response = await fetchRecipeByCategoryPerPage(category, page);
 
-    if (!response.data.totalPages) {
-      Notiflix.Notify.failure('Ooops! No recipes found');
-      return;
-    }
+//     if (!response.data.totalPages) {
+//       Notiflix.Notify.failure('Ooops! No recipes found');
+//       return;
+//     }
 
-    const pickedRecipes = response.data;
-    recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
-  } catch (error) {
-    console.log(error);
-    Notiflix.Notify.failure('Ooops! No recipes found');
-  }
-}
+//     const pickedRecipes = response.data;
+//     recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+//   } catch (error) {
+//     console.log(error);
+//     Notiflix.Notify.failure('Ooops! No recipes found');
+//   }
+// }
 
 // export async function renderRecipe(category, page) {
 //   try {
