@@ -6,11 +6,11 @@ import { PER_PAGE } from './pagination';
 import { pagination } from './pagination';
 import { createPagination } from './pagination';
 import { allCategories } from './all-categories';
+import { searchedCategory } from './all-categories';
 
 export const recipeList = document.querySelector('.recipe-list');
 export const searchInput = document.querySelector('.search-input');
 const reset = document.querySelector('.reset-wrap');
-//const allCategories = document.querySelector('.all-categories');
 const categoriesList = document.querySelector('.categories-wrapper');
 export const paginationWrap = document.querySelector('.tui-pagination');
 
@@ -27,7 +27,6 @@ if (document.documentElement.clientWidth < 768) {
 }
 
 export let searchedTitle = '';
-// export let searchedCategory = '';
 
 // ================EVENT LISTENERS=================
 
@@ -44,6 +43,8 @@ function handleSearchInput(event) {
   if (previousActiveBtn) {
     previousActiveBtn.classList.remove('category-btn-active');
   }
+
+  allCategories.classList.remove('active');
 }
 
 if (reset) {
@@ -53,7 +54,8 @@ if (reset) {
 function handleResetClick() {
   searchInput.value = '';
   searchedTitle = '';
-  searchedCategory = '';
+  allCategories.classList.add('active');
+
   if (paginationWrap.classList.contains('is-hidden')) {
     paginationWrap.classList.remove('is-hidden');
   }
@@ -72,6 +74,7 @@ if (allCategories) {
 
 function handleAllCategoriesClick() {
   searchInput.value = '';
+  allCategories.classList.add('active');
   renderAllRecipes();
 }
 
@@ -204,7 +207,7 @@ export async function renderSearchedRecipes(searchedTitle) {
     let totalPages = response.data.totalPages;
     let category = '';
     let title = searchedTitle;
-    console.log(response.data.totalPages);
+
     if (totalPages > 1) {
       createPagination(category, title, totalPages);
       paginationWrap.classList.remove('is-hidden');

@@ -56,10 +56,8 @@ export function createPagination(category, title, totalPages) {
     let category = searchedCategory;
     if (title) {
       renderRecipeByTitlePerPage(title, page);
-      console.log(title);
     } else if (category) {
       renderRecipeByCategoryPerPage(category, page);
-      console.log(category);
     } else {
       renderRecipesOnPerPage(page);
     }

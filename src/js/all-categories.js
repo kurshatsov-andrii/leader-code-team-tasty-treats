@@ -1,7 +1,7 @@
 import axios from 'axios';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { createAllRecipesMarkUp } from './catalog';
+import { createAllRecipesMarkUp, searchedTitle } from './catalog';
 import { PER_PAGE } from './pagination';
 import { searchInput, recipeList } from './catalog';
 import { createPagination } from './pagination';
@@ -15,6 +15,7 @@ const btnCategory = document.querySelector('.btn-all');
 export const allCategories = document.querySelector('.all-categories');
 const blokCategory = document.querySelector('.categories-container');
 const itemCat = document.querySelector('.categories-item');
+const reserWrap = document.querySelector('.reset-wrap');
 
 //------
 const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/';
@@ -73,12 +74,26 @@ function handleCategoriesListClick(event) {
   // Встановлюємо активний клас на нову кнопку
   event.target.classList.add('category-btn-active');
 
+  // Прибираємо активний клас з головної кнопки
+  allCategories.classList.remove('active');
+
   // Очищаємо інпут
   searchInput.value = '';
 
   searchedCategory = event.target.innerText;
 
   renderRecipeByCategory(searchedCategory);
+}
+
+if (reserWrap) {
+  reserWrap.addEventListener('click', onResetClick);
+}
+
+function onResetClick() {
+  if (searchedCategory) {
+    searchedCategory = '';
+    console.log(searchedCategory);
+  }
 }
 
 async function fetchRecipeByCategory(category) {
