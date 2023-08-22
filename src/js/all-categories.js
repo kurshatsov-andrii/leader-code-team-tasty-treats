@@ -123,7 +123,14 @@ export async function renderRecipeByCategory(category) {
     let totalPages = response.data.totalPages;
 
     let title = '';
-
+   if (allCategories) {
+  allCategories.addEventListener('click', handleAllCategoriesClick);
+}
+   function handleAllCategoriesClick() {
+    if (searchedCategory) {
+      searchedCategory = '';
+    }
+}
     if (totalPages > 1) {
       createPagination(category, title, totalPages);
       paginationWrap.classList.remove('is-hidden');

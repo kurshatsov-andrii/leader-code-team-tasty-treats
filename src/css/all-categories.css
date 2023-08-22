@@ -10,6 +10,9 @@
 .btn-all.active {
   color: var(--color-green);
 }
+body.dark-theme .btn-all.category-btn-active {
+  color: var(--color-green);
+}
 
 body.dark-theme .all-categories {
   border: 1px solid rgba(255, 255, 255, 0.2);
