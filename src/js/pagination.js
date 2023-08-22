@@ -2,8 +2,8 @@ import Pagination from 'tui-pagination';
 import 'tui-pagination/dist/tui-pagination.css';
 import { renderAllRecipes, renderRecipesOnPerPage, renderRecipe, renderRecipeByTitlePerPage, searchedTitle } from './catalog';
 
-import { renderRecipeByCategoryPerPage } from './all-categories';
-import { searchedCategory } from './all-categories';
+import { renderRecipeByCategoryPerPage } from '../js/all-categories';
+import { searchedCategory } from '../js/all-categories';
 
 const paginationElement = document.getElementById('pagination');
 const recipeList = document.querySelector('.recipe-list');

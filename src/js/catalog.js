@@ -2,9 +2,9 @@ import axios from 'axios';
 import _ from 'lodash';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { PER_PAGE } from './pagination';
+import { PER_PAGE } from '../js/pagination';
 import { pagination } from './pagination';
-import { createPagination } from './pagination';
+import { createPagination } from '../js/pagination';
 
 export const recipeList = document.querySelector('.recipe-list');
 export const searchInput = document.querySelector('.search-input');
