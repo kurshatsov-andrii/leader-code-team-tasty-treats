@@ -282,9 +282,9 @@
     margin-top: 0;
     margin-bottom: 8px;
     text-transform: uppercase;
-    /* overflow: hidden;
-        text-overflow:ellipsis;
-        white-space:nowrap; */
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
   }
   body.dark-theme .popular-recipes-title {
     background-color: var(--color-dark-theme);

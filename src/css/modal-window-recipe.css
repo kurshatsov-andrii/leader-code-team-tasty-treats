@@ -192,7 +192,13 @@
   line-height: 0.9;
   padding-right: 4px;
   color: var(--color-black-text);
+  opacity: 0.5;
 }
+
+.rating .modal-text{
+  opacity: 0.5;
+}
+
 .rating-active {
   position: absolute;
   width: 0%; /*!!!!!!!!!!!!!!!!!!!!!!*/
@@ -227,6 +233,7 @@
 .ingredients-item div:last-child {
   text-align: right;
   max-width: 50%;
+  opacity: 0.5;
 }
 .ingredients-item div {
   color: var(--color-black-text);
