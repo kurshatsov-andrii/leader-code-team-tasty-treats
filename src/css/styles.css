@@ -156,7 +156,7 @@ body .dark-theme {
     bottom: 50px;
     cursor: pointer;
     display: none;
-    font-size: 20px;
+    font-size: 15px;
     color: var(--color-white-text);
     border: 1px solid var(--color-white-text);
     background-color: var(--color-green);
