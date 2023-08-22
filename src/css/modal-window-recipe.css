@@ -185,7 +185,7 @@
 .rating-body::before {
   content: '★★★★★';
   display: block;
-  color: var(--bg-gradient);
+  color: rgba(248, 248, 248, 0.3);
 }
 .rating-value {
   font-size: 14px;

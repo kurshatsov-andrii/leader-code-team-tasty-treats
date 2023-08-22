@@ -153,7 +153,7 @@ export function createAllRecipesMarkUp(allRecipesObj) {
       </div>
     </div>
   </div>
-          <button type="button" class="open-recipe-btn" data-id=${_id} data-popup="recepie">See recipe</button>
+          <button type="button" class="open-recipe-btn" data-id=${_id}>See recipe</button>
           </div>
           </div>
           </div>
@@ -185,7 +185,6 @@ export async function renderAllRecipes() {
       createPagination(category, title, totalPages);
     }
   } catch (error) {
-    console.log(error);
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }
@@ -215,7 +214,6 @@ export async function renderSearchedRecipes(searchedTitle) {
       paginationWrap.classList.add('is-hidden');
     }
   } catch (error) {
-    console.log(error);
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }

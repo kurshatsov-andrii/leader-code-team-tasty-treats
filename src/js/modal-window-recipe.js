@@ -29,10 +29,6 @@ function onCatalogRecipe(evt) {
     return;
   }
   recipeId = evt.target.dataset.id;
-
-  // document.addEventListener('keydown', onEscClose);
-
-  openPopupById('recepie');
   fetchRecipes(recipeId);
   renderModalWindow(recipeId);
 }
@@ -125,7 +121,6 @@ function modalWindowRecipesMarkUp(obj) {
       <p class="instructions-text">${instructions}</p></div>
       <button type="button" class="favorite-btn btn">Add to favorite</button>
       `;
-
   return addHtml;
 }
 
@@ -134,5 +129,4 @@ function onFavoriteBtn(evt) {
 
   favoriteArr.push(recipes);
   localStorage.setItem(KEY_FAVORITE, JSON.stringify(favoriteArr));
-  console.log(recipes);
 }
