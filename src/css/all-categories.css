@@ -7,22 +7,22 @@
   color: var(--color-light-theme);
   border-color: 1px solid var(--color-green);
 }
-.btn.active {
+.btn-all.active {
   color: var(--color-green);
 }
 body.dark-theme .all-categories {
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
-body.dark-theme .btn {
+body.dark-theme .btn-all {
   color: var(--color-light-theme);
 }
 body.dark-theme .all-categories {
   color: var(--color-light-theme);
 }
-body.dark-theme .btn:hover {
+body.dark-theme .btn-all:hover {
   color: var(--color-green);
 }
-body.dark-theme .btn:focus {
+body.dark-theme .btn-all:focus {
   color: var(--color-green);
 }
 ::-webkit-scrollbar {
@@ -41,7 +41,7 @@ body.dark-theme .btn:focus {
 li {
   list-style-type: none;
 }
-.btn {
+.btn-all {
   background-color: transparent;
   font-family: --primary-font();
   color: rgba(5, 5, 5, 0.3);
@@ -73,8 +73,8 @@ li {
   color: var(--color-light-theme);
   border-color: 1px solid var(--color-green);
 }
-.btn:hover,
-.btn:focus {
+.btn-all:hover,
+.btn-all:focus {
   color: var(--color-green);
 }
 
@@ -91,7 +91,7 @@ li {
     left: 20px;
     margin-bottom: 24px;
   }
-  .btn {
+  .btn-all {
     font-size: 14px;
     line-height: 18px;
   }
@@ -116,7 +116,7 @@ li {
     left: 32px;
     margin-bottom: 30px;
   }
-  .btn {
+  .btn-all {
     font-size: 16px;
     line-height: 20px;
   }
