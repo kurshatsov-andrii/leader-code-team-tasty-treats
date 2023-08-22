@@ -44,6 +44,7 @@ export function openPopupById(id) {
 export function closeOllPopups() {
   allCustomPopups.forEach(popup => {
     if (popup.classList.contains('is-open')) {
+      console.log(popup.id);
       if (popup.id === 'recepie') {
         setTimeout(() => {
           popup.querySelector('.js-backend-info').innerHTML = '';

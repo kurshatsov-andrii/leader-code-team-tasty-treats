@@ -116,7 +116,6 @@ export async function renderRecipeByCategory(category) {
       paginationWrap.classList.add('is-hidden');
     }
   } catch (error) {
-    console.log(error);
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }
@@ -133,7 +132,6 @@ export async function renderRecipeByCategoryPerPage(category, page) {
     const pickedRecipes = response.data;
     recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
   } catch (error) {
-    console.log(error);
     Notiflix.Notify.failure('Ooops! No recipes found');
   }
 }
