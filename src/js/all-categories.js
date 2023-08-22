@@ -84,7 +84,21 @@ function handleCategoriesListClick(event) {
 
   renderRecipeByCategory(searchedCategory);
 }
-
+if (allCategories) {
+  allCategories.addEventListener('click', handleAllCategoriesClick);
+}
+   function handleAllCategoriesClick() {
+    if (searchedCategory) {
+      searchedCategory = '';
+     }
+     if (paginationWrap.classList.contains('is-hidden')) {
+    paginationWrap.classList.remove('is-hidden');
+     }
+     const previousActiveBtn = document.querySelector('.category-btn-active');
+  if (previousActiveBtn) {
+    previousActiveBtn.classList.remove('category-btn-active');
+  }
+}
 if (reserWrap) {
   reserWrap.addEventListener('click', onResetClick);
 }
@@ -123,14 +137,7 @@ export async function renderRecipeByCategory(category) {
     let totalPages = response.data.totalPages;
 
     let title = '';
-   if (allCategories) {
-  allCategories.addEventListener('click', handleAllCategoriesClick);
-}
-   function handleAllCategoriesClick() {
-    if (searchedCategory) {
-      searchedCategory = '';
-    }
-}
+   
     if (totalPages > 1) {
       createPagination(category, title, totalPages);
       paginationWrap.classList.remove('is-hidden');
@@ -158,64 +165,3 @@ export async function renderRecipeByCategoryPerPage(category, page) {
   }
 }
 
-// //////////////////////////////////////////////////////
-
-// const categoryContainer = document.querySelector('all-categories-js');
-// const categoriesAll = document.querySelector('.categories-wrapper');
-// const btnCategory = document.querySelector(".btn-all");
-// const allCategories = document.querySelector('.all-categories');
-// const blokCategory = document.querySelector('.categories-container');
-// const itemCat = document.querySelector('.categories-item');
-
-// allCategories.addEventListener('click', handleBtnClick);
-// console.log(btnCategory)
-// categoriesAll.addEventListener('click', handleBtnClick);
-// let clicked = null;
-
-// function handleBtnClick(event) {
-//   console.log("click")
-//   const Btn = event.target;
-//   clicked = Btn;
-//   Btn.classList.add('active');
-
-//   if (Btn.nodeName !== 'BUTTON') {
-//     return;
-//   }
-
-//   if (Btn) {
-//     Btn.classList.remove('active');
-//   }
-
-//   if (Btn === allCategories) {
-//     removeActiveCategoryBtn();
-//   }
-//   else {
-//   allCategories.classList.remove('active');
-//   }
-// }
-
-// function removeActiveCategoryBtn() {
-//   const buttons = categoriesAll.querySelectorAll('.btn-all')
-//   buttons.forEach(button => {
-//    button.classList.remove('active')
-//   })
-
-// }
-//  categoriesAll.addEventListener('click', event => {
-//   if (!event.target.classList.contains('btn-all')) {
-//     event.stopPropagation();
-//   }
-// });
-
-// categoriesAll.addEventListener('click', handleBtnClick);
-// allCategories.addEventListener('click', handleBtnClick);
-// function handleBtnClick(event) {
-//   console.log("event.target")
-// }
-// const buttons = btnCategory.querySelectorAll('.btn')
-// buttons.forEach(button => {
-//   button.addEventListener('click', handleBtnClick)
-// })
-// const handleBtnClick = (event) => {
-//    console.log("click")
-// }
