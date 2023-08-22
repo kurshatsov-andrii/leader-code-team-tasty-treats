@@ -4,24 +4,23 @@ export class FechFullRecipe {
   #BASE_URL = `https://tasty-treats-backend.p.goit.global/api/recipes`;
   constructor(ID) {
     this.ID = ID;
-  };
+  }
 
   async getRecipe() {
-    try{
+    try {
       const recipe = await axios.get(`${this.#BASE_URL}/${this.ID}`);
       return recipe;
-
-    } catch(error) {
+    } catch (error) {
       console.log(error);
-    };
-  };
-};
+    }
+  }
+}
 
 import _ from 'lodash';
 import Notiflix from 'notiflix';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
-const recipeList = document.querySelector('.recipe-list');
+//const recipeList = document.querySelector('.recipe-list');
 const searchInput = document.querySelector('.search-input');
 const reset = document.querySelector('.reset-wrap');
 const allCategories = document.querySelector('.all-categories');
@@ -225,7 +224,7 @@ async function renderRecipe(category) {
     Notiflix.Notify.failure('Ой! Рецепти не знайдено');
   }
 }
-//================ Bogdan >>>>> 
+//================ Bogdan >>>>>
 if (recipeList) {
   renderAllRecipes();
 }
@@ -311,9 +310,7 @@ function createRecipeMarkup(allRecipesObj) {
     .join('');
 }
 
-
 // document.addEventListener('DOMContentLoaded', () => {
- 
 
 //   // Оновлюю стан кнопок додавання до улюблених
 //   updateFavoriteButtons();
@@ -333,4 +330,3 @@ function createRecipeMarkup(allRecipesObj) {
 //   });
 
 // });
-
