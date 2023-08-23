@@ -1,4 +1,6 @@
 import Swiper from 'swiper/swiper-bundle.min.mjs';
+import { formatDescription, formatTitle } from '../js/catalog';
+
 import 'swiper/swiper-bundle.min.css';
 import { createFavPagination } from './pagination';
 import { formatTitle, formatDescription } from './catalog';
@@ -6,9 +8,13 @@ import { formatTitle, formatDescription } from './catalog';
 const favoritesPage = document.querySelector('.favorites-main-wrapper');
 const paginationWrap2 = document.querySelector('#pagination2');
 
-let favoritesData = [];
-if (localStorage.favorites) {
-  favoritesData = JSON.parse(localStorage.favorites);
+let favoritesData = favoritesDataInit();
+
+export function favoritesDataInit() {
+  if (localStorage.favorites) {
+    return JSON.parse(localStorage.favorites);
+  }
+  return [];
 }
 
 let PER_PAGE_FAV = 0;
@@ -95,7 +101,7 @@ function renderFavoritesMarkup() {
       return;
     }
     renderFavoritesFilterNavigationMarkup();
-    renderFavoritesCartsListMarkup();
+    renderFavoritesCartsListMarkup(favoritesData);
   }
 }
 
@@ -130,35 +136,40 @@ function renderFavoritesFilterNavigationMarkup() {
       {
         category: 'all',
         text: 'All categories',
+        clas: 'active',
       },
     ];
     favoritesData.forEach(data => {
-      categories.push({
-        category: data.category,
-        text: data.category,
-      });
+      const categoriesArr = categories;
+      const addedButton = { category: data.category, text: data.category, clas: '' };
+      let checker = true;
+      for (let i = 0; i < categoriesArr.length; i++) {
+        if (categoriesArr[i].category === addedButton.category) {
+          checker = false;
+          break;
+        }
+      }
+      if (checker === true) {
+        categories.push(addedButton);
+      }
     });
     let favoritesFilterMarkup = categories.map(
-      ({ categorie, text }) =>
-        `<div class="swiper-slide"><button type="button" data-category="${categorie}" class="fav-categoty-btn">${text}</button></div>`
+      ({ category, text, clas }) =>
+        `<div class="swiper-slide"><button type="button" data-category="${category}" class="fav-categoty-btn ${clas}">${text}</button></div>`
     );
     favoritesFilter.insertAdjacentHTML('beforeend', favoritesFilterMarkup.join(''));
     initFavoriteSlider();
   }
 }
 
-function renderFavoritesCartsListMarkup() {
+export function renderFavoritesCartsListMarkup(arr) {
   const favoritesCards = document.querySelector('.favorite-render-cards');
   if (favoritesCards) {
     favoritesCards.innerHTML = '';
-
-    let favoritesCardsMarkup = '';
-
-    if (favoritesData.length <= PER_PAGE_FAV) {
-      favoritesCardsMarkup = favoritesData.map(
-        ({ id, category, preview, title, description, rating }) =>
-          `
-          <li
+    
+    const favoritesCardsMarkup = arr.map(
+      ({ id, category, preview, title, description, rating }) =>
+        `<li
           class="recipe-item js-data-info is-favorite"
           data-title="${title}"
           data-description="${description}"
