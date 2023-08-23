@@ -4,7 +4,7 @@ import { renderAllRecipes, renderRecipesOnPerPage, renderRecipe, renderRecipeByT
 
 import { renderRecipeByCategoryPerPage } from '../js/all-categories';
 import { searchedCategory } from '../js/all-categories';
-import { renderFavoritesCartsListMarkupPerPage } from './favorites';
+import { renderFavoritesCartsListMarkupPerPage } from './favorites-pagination';
 
 const paginationElement = document.getElementById('pagination1');
 const paginationElementFav = document.getElementById('pagination2');
