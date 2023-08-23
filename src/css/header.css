@@ -168,6 +168,12 @@ body.dark-theme .burger-menu-icon {
   left: 20px;
 }
 
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--main-color);
+  text-decoration: underline;
+}
+
 /* ----- Media----- */
 @media screen and (max-width: 767px) {
   .nav-list {

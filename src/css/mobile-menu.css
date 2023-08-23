@@ -50,6 +50,10 @@
   transform: translate(100%, 0%);
 }
 
+body.dark-theme .mobil-menu-body {
+  background: var(--color-dark-theme);
+}
+
 .mobil-menu-wrapper.is-open .mobil-menu-body {
   transform: translate(0%, 0%);
 }
