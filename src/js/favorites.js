@@ -1,10 +1,25 @@
 import Swiper from 'swiper/swiper-bundle.min.mjs';
 import 'swiper/swiper-bundle.min.css';
+import { createFavPagination } from './pagination';
 const favoritesPage = document.querySelector('.favorites-main-wrapper');
+const paginationWrap2 = document.querySelector('#pagination2');
 
 let favoritesData = [];
 if (localStorage.favorites) {
   favoritesData = JSON.parse(localStorage.favorites);
+}
+
+let PER_PAGE_FAV = 0;
+if (document.documentElement.clientWidth < 768) {
+  PER_PAGE_FAV = 9;
+} else {
+  PER_PAGE_FAV = 12;
+}
+
+let totalFavItems = 0;
+if (localStorage.favorites) {
+  favoritesData = JSON.parse(localStorage.favorites);
+  totalFavItems = favoritesData.length;
 }
 
 window.addEventListener('click', catchAddToFavoritesButtons);
@@ -13,6 +28,21 @@ renderFavoritesMarkup();
 function catchAddToFavoritesButtons(e) {
   if (e.target.classList.contains('icon-heart') || e.target.classList.contains('favorite-btn')) {
     addToFavorites(e.target);
+
+    if (localStorage.favorites) {
+      totalFavItems = JSON.parse(localStorage.favorites).length;
+      // console.log(totalFavItems);
+    } else {
+      totalFavItems = 0;
+    }
+
+    if (totalFavItems > PER_PAGE_FAV && paginationWrap2.classList.contains('is-hidden')) {
+      paginationWrap2.classList.remove('is-hidden');
+    }
+
+    if (totalFavItems <= PER_PAGE_FAV && !paginationWrap2.classList.contains('is-hidden')) {
+      paginationWrap2.classList.add('is-hidden');
+    }
   }
 }
 
@@ -120,9 +150,13 @@ function renderFavoritesCartsListMarkup() {
   const favoritesCards = document.querySelector('.favorite-render-cards');
   if (favoritesCards) {
     favoritesCards.innerHTML = '';
-    const favoritesCardsMarkup = favoritesData.map(
-      ({ id, category, preview, title, description, rating }) =>
-        `
+
+    let favoritesCardsMarkup = '';
+
+    if (favoritesData.length <= PER_PAGE_FAV) {
+      favoritesCardsMarkup = favoritesData.map(
+        ({ id, category, preview, title, description, rating }) =>
+          `
           <li
           class="recipe-item js-data-info is-favorite"
           data-title="${title}"
@@ -169,10 +203,82 @@ function renderFavoritesCartsListMarkup() {
             </a>
           </li>  
           `
-    );
+      );
+    } else {
+      let newFavoritesData = favoritesData.filter((recipe, index) => index < PER_PAGE_FAV);
+      console.log(newFavoritesData);
+
+      favoritesCardsMarkup = newFavoritesData.map(
+        ({ id, category, preview, title, description, rating }) =>
+          `
+          <li
+          class="recipe-item js-data-info is-favorite"
+          data-title="${title}"
+          data-description="${description}"
+          data-preview="${preview}"
+          data-rating="${rating}"
+          data-id="${id}"
+          data-category="${category}"
+          >
+            <a href="${preview}" class="recipe-link">
+              <img
+                src="${preview}"
+                alt="Lamb Rogan josh"
+                class="recipe-image"
+              />
+              <div class="recipe-card-bg-cover">
+                <svg class="icon-heart">
+                  <path
+                    d="M15.991 6.848c-2.665-3.117-7.111-3.956-10.449-1.103-3.34 2.854-3.811 7.625-1.187 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.241 0.214 0.364 0.321 0.503 0.364 0.057 0.017 0.123 0.027 0.191 0.027s0.134-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.764-7.834 10.944-10.64 2.623-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.786-2.016-10.452 1.101z"
+                  ></path>
+                </svg>
+                <div class="recipe-card-text-wrap">
+                  <h3 class="recipe-title">${title}</h3>
+                  <p class="recipe-description">${description}</p>
+                  <div class="ratio-btn-wrap">
+                    <div class="rating">
+                      <div class="rating-value-white">${Number(rating).toFixed(1)}</div>
+                      <div class="rating-body">
+                        <div class="rating-active" style="width: 79.6%">
+                          <div class="rating-items">
+                            <input type="radio" class="rating-item" value="1" name="rating" />
+                            <input type="radio" class="rating-item" value="2" name="rating" />
+                            <input type="radio" class="rating-item" value="3" name="rating" />
+                            <input type="radio" class="rating-item" value="4" name="rating" />
+                            <input type="radio" class="rating-item" value="5" name="rating" />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <button type="button" class="open-recipe-btn" data-id="${id}">See recipe</button>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </li>  
+          `
+      );
+    }
+
+    console.log(favoritesData.length);
+
     favoritesCards.insertAdjacentHTML('beforeend', favoritesCardsMarkup.join(''));
   }
 }
+
+// function renderFavoritesCartsListMarkupPerPage(page) {
+//   const favoritesCards = document.querySelector('.favorite-render-cards');
+
+//   if (favoritesCards) {
+//     favoritesCards.innerHTML = '';
+
+//     let favoritesCardsMarkup = '';
+//     let newfavoritesData = [];
+
+//     if (page === 1) {
+//     }
+//   }
+// }
 
 function initFavoriteSlider() {
   new Swiper('.swiper-favorite-navigation', {
@@ -185,4 +291,10 @@ function initFavoriteSlider() {
       },
     },
   });
+}
+
+// =============== PAGINATION=============
+
+if (document.title === 'Favorites tasty treats' && totalFavItems > PER_PAGE_FAV) {
+  createFavPagination(totalFavItems);
 }
