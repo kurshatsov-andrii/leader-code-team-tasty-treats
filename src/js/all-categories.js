@@ -7,6 +7,7 @@ import { searchInput, recipeList } from './catalog';
 import { createPagination } from './pagination';
 import { paginationWrap } from './catalog';
 import { recipeList } from './catalog';
+import { addFavoritesClasses } from '../js/favorites';
 
 const categoryContainer = document.querySelector('all-categories-js');
 const categoriesAll = document.querySelector('.categories-wrapper');
@@ -92,7 +93,6 @@ if (reserWrap) {
 function onResetClick() {
   if (searchedCategory) {
     searchedCategory = '';
-    console.log(searchedCategory);
   }
 }
 
@@ -118,19 +118,20 @@ export async function renderRecipeByCategory(category) {
     }
     const pickedRecipes = response.data;
     recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+    addFavoritesClasses();
 
     // Додаємо пагінацію
     let totalPages = response.data.totalPages;
 
     let title = '';
-   if (allCategories) {
-  allCategories.addEventListener('click', handleAllCategoriesClick);
-}
-   function handleAllCategoriesClick() {
-    if (searchedCategory) {
-      searchedCategory = '';
+    if (allCategories) {
+      allCategories.addEventListener('click', handleAllCategoriesClick);
     }
-}
+    function handleAllCategoriesClick() {
+      if (searchedCategory) {
+        searchedCategory = '';
+      }
+    }
     if (totalPages > 1) {
       createPagination(category, title, totalPages);
       paginationWrap.classList.remove('is-hidden');
@@ -153,6 +154,7 @@ export async function renderRecipeByCategoryPerPage(category, page) {
 
     const pickedRecipes = response.data;
     recipeList.innerHTML = createAllRecipesMarkUp(pickedRecipes);
+    addFavoritesClasses();
   } catch (error) {
     Notiflix.Notify.failure('Ooops! No recipes found');
   }

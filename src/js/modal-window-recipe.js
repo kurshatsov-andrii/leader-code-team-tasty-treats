@@ -4,6 +4,7 @@ import { closeOllPopups } from '../js/custom-popup';
 
 const recipeModalWindow = document.querySelector('.js-backend-info');
 const popularRecipeList = document.querySelector('.popular-recipes-js');
+const favoritesRecipeList = document.querySelector('.favorites-recipes-js');
 const addFavoriteBtn = document.querySelector('.favorite-btn');
 const recipeList = document.querySelector('.recipe-list');
 const favoriteArr = [];
@@ -12,6 +13,11 @@ const KEY_FAVORITE = 'favorite';
 if (popularRecipeList) {
   popularRecipeList.addEventListener('click', onPopularRecipe);
 }
+
+if (favoritesRecipeList) {
+  favoritesRecipeList.addEventListener('click', onCatalogRecipe);
+}
+
 if (recipeList) {
   recipeList.addEventListener('click', onCatalogRecipe);
 }
@@ -67,9 +73,17 @@ async function renderModalWindow(id) {
 }
 
 function modalWindowRecipesMarkUp(obj) {
-  const { title, instructions, youtube, ingredients, rating, tags, time, preview } = obj;
+  const { title, instructions, youtube, ingredients, rating, tags, time, preview, category, description, _id } = obj;
   const addHtml = `
-      <h2 class="js-recepie-popup-title">${title.toUpperCase()}</h2>
+      <h2 
+        class="js-recepie-popup-title js-data-info"
+        data-id="${_id}"
+        data-category="${category}"
+        data-preview="${preview}" 
+        data-title="${title}"
+        data-description="${description}"
+        data-rating="${rating}" 
+      >${title.toUpperCase()}</h2>
       <div class="video-recipe">
         <iframe
           width="560"

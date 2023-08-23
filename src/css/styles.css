@@ -37,15 +37,30 @@
 
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  min-height: 100%;
+  align-content: space-between;
   font-family: var(--primary-font);
   color: var(--color-black);
   background-color: var(--color-light-theme);
   font-family: var(--primary-font);
   color: var(--color-black-text);
   background-color: var(--color-light-theme);
+}
+
+main {
+  width: 100%;
+  align-self: flex-start;
+}
+
+header {
+  width: 100%;
 }
 
 body .dark-theme {
@@ -55,6 +70,7 @@ body .dark-theme {
 .container {
   margin-left: auto;
   margin-right: auto;
+  width: 100%;
 }
 
 /*-------CONTAINER < 375px-----------------*/

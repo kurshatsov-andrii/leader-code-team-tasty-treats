@@ -8,8 +8,9 @@
 }
 
 .favorites {
-  padding-top: 284px;
-  padding-bottom: 144px;
+  padding-top: 50px;
+  padding-bottom: 40px;
+  overflow-x: hidden;
 }
 
 .fav-icon {
@@ -30,14 +31,20 @@ body.dark-theme .favorites-text {
 }
 
 .fav-def-img {
-  display: none;
   border-radius: 15px;
+  margin-bottom: 40px;
+}
+
+@media screen and (max-width: 767px) {
+  .fav-def-img.del_in_mobil {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 768px) {
   .favorites {
     padding-top: 50px;
-    padding-bottom: 199px;
+    padding-bottom: 50px;
   }
 
   .fav-def-img {
@@ -71,4 +78,9 @@ body.dark-theme .favorites-text {
     height: 356px;
     display: block;
   }
+}
+
+.recipe-item.is-favorite .icon-heart {
+  fill: rgb(255, 31, 31);
+  stroke: rgb(255, 31, 31);
 }
