@@ -357,7 +357,7 @@ export async function renderRecipesOnPerPage(page) {
 
 // ===============HELPER FUNCTIONS============== //
 
-function formatDescription(description) {
+export function formatDescription(description) {
   let result;
   let maxWidth = 0;
   if (document.documentElement.clientWidth < 768) {
@@ -373,7 +373,7 @@ function formatDescription(description) {
   return result;
 }
 
-function formatTitle(title) {
+export function formatTitle(title) {
   let result;
   result = title.length <= 20 ? title : title.slice(0, 20) + ' ...';
   return result;
