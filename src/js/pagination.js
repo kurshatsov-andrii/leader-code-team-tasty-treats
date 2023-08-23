@@ -5,7 +5,8 @@ import { renderAllRecipes, renderRecipesOnPerPage, renderRecipe, renderRecipeByT
 import { renderRecipeByCategoryPerPage } from '../js/all-categories';
 import { searchedCategory } from '../js/all-categories';
 
-const paginationElement = document.getElementById('pagination');
+const paginationElement = document.getElementById('pagination1');
+const paginationElementFav = document.getElementById('pagination2');
 const recipeList = document.querySelector('.recipe-list');
 
 export let PER_PAGE = 0;
@@ -33,7 +34,7 @@ if (document.documentElement.clientWidth < 768) {
 // });
 
 export function createPagination(category, title, totalPages) {
-  const pagination = new Pagination('pagination', {
+  let pagination1 = new Pagination('pagination1', {
     totalItems: totalPages * PER_PAGE,
     itemsPerPage: PER_PAGE,
     visiblePages: document.documentElement.clientWidth < 768 ? 2 : 3,
@@ -50,7 +51,7 @@ export function createPagination(category, title, totalPages) {
     },
   });
 
-  pagination.on('afterMove', event => {
+  pagination1.on('afterMove', event => {
     const { page } = event;
     let title = searchedTitle;
     let category = searchedCategory;
@@ -61,5 +62,29 @@ export function createPagination(category, title, totalPages) {
     } else {
       renderRecipesOnPerPage(page);
     }
+  });
+}
+
+export function createFavPagination(totalFavItems) {
+  let pagination2 = new Pagination('pagination2', {
+    totalItems: totalFavItems,
+    itemsPerPage: document.documentElement.clientWidth < 768 ? 9 : 12,
+    visiblePages: document.documentElement.clientWidth < 768 ? 2 : 3,
+    page: 1,
+    template: {
+      page: '<a href="#" class="tui-page-btn">{{page}}</a>',
+      currentPage: '<strong class="tui-page-btn tui-is-selected">{{page}}</strong>',
+      moveButton: '<a href="#" class="tui-page-btn tui-{{type}} custom-class-{{type}}">' + '<span class="tui-ico-{{type}}">{{type}}</span>' + '</a>',
+      disabledMoveButton:
+        '<span class="tui-page-btn tui-is-disabled tui-{{type}} custom-class-{{type}}">' +
+        '<span class="tui-ico-{{type}}">{{type}}</span>' +
+        '</span>',
+      moreButton: '<a href="#" class="tui-page-btn tui-{{type}}-is-ellip custom-class-{{type}}">' + '<span class="tui-ico-ellip">...</span>' + '</a>',
+    },
+  });
+
+  pagination2.on('afterMove', event => {
+    const { page } = event;
+    console.log(page);
   });
 }
