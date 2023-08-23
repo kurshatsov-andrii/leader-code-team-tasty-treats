@@ -166,7 +166,7 @@ export function renderFavoritesCartsListMarkup(arr) {
   const favoritesCards = document.querySelector('.favorite-render-cards');
   if (favoritesCards) {
     favoritesCards.innerHTML = '';
-    
+
     const favoritesCardsMarkup = arr.map(
       ({ id, category, preview, title, description, rating }) =>
         `<li
@@ -215,13 +215,13 @@ export function renderFavoritesCartsListMarkup(arr) {
             </a>
           </li>  
           `
-      );
-    } else {
-      let newFavoritesData = favoritesData.filter((recipe, index) => index < PER_PAGE_FAV);
+    );
+  } else {
+    let newFavoritesData = favoritesData.filter((recipe, index) => index < PER_PAGE_FAV);
 
-      favoritesCardsMarkup = newFavoritesData.map(
-        ({ id, category, preview, title, description, rating }) =>
-          `
+    favoritesCardsMarkup = newFavoritesData.map(
+      ({ id, category, preview, title, description, rating }) =>
+        `
           <li
           class="recipe-item js-data-info is-favorite"
           data-title="${title}"
@@ -268,11 +268,10 @@ export function renderFavoritesCartsListMarkup(arr) {
             </a>
           </li>  
           `
-      );
-    }
-
-    favoritesCards.insertAdjacentHTML('beforeend', favoritesCardsMarkup.join(''));
+    );
   }
+
+  favoritesCards.insertAdjacentHTML('beforeend', favoritesCardsMarkup.join(''));
 }
 
 function initFavoriteSlider() {
