@@ -65,6 +65,11 @@ body.dark-theme .logo-color {
   stroke: currentColor;
 }
 
+.shopping-icon:hover,
+.shopping-icon:focus{
+   stroke: var(--color-green);
+}
+
 .burger-menu {
   display: flex;
   align-items: center;
@@ -83,6 +88,16 @@ body.dark-theme .logo-color {
 
 body.dark-theme .burger-menu-icon {
   stroke: var(--color-white-text);
+}
+
+.burger-menu-icon:hover,
+.burger-menu-icon:focus {
+  stroke: var(--color-green);
+}
+
+body.dark-theme .burger-menu-icon:hover,
+body.dark-theme .burger-menu-icon:focus {
+  stroke: var(--color-green);
 }
 
 /* ---TOGGLE SWITCH--- */
@@ -166,6 +181,12 @@ body.dark-theme .burger-menu-icon {
   position: absolute;
   bottom: 20px;
   left: 20px;
+}
+
+.nav-link:hover,
+.nav-link:focus {
+  color: var(--main-color);
+  text-decoration: underline;
 }
 
 /* ----- Media----- */
