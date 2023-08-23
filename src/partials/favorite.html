@@ -2,278 +2,33 @@
   <div class="favorites-container container">
     <h2 class="visuallyhidden">Favorites</h2>
     <picture>
-      <source srcset="./images/favorites/fav-decktop-1x.webp 1x, ./images/favorites/fav-decktop-2x.webp 2x"
-        media="(min-width: 1280px)" type="image/webp" />
-      <source srcset="./images/favorites/fav-decktop-1x.jpg 1x, ./images/favorites/fav-decktop-2x.jpg 2x"
-        media="(min-width: 1280px)" />
-      <source srcset="./images/favorites/fav-tablet-1x.webp 1x, ./images/favorites/fav-tablet-2x.webp 2x"
-        media="(min-width: 768px)" type="image/webp" />
-      <source srcset="./images/favorites/fav-tablet-1x.jpg 1x, ./images/favorites/fav-tablet-2x.jpg 2x"
-        media="(min-width: 768px)" />
-      <source srcset="./images/favorites/fav-mob-1x.webp 1x, ./images/favorites/fav-mob-2x.webp 2x"
-        media="(max-width: 767px)" type="image/webp" />
-      <source srcset="./images/favorites/fav-mob-1x.jpg 1x, ./images/favorites/fav-mob-2x.jpg 2x"
-        media="(max-width: 767px)" />
-      <img src="./images/favorites/fav-decktop-1x.jpg" alt="rice and fish dish" class="fav-def-img" width="335"
-        height="516" />
+      <source
+        srcset="./images/favorites/fav-decktop-1x.webp 1x, ./images/favorites/fav-decktop-2x.webp 2x"
+        media="(min-width: 1280px)"
+        type="image/webp"
+      />
+      <source srcset="./images/favorites/fav-decktop-1x.jpg 1x, ./images/favorites/fav-decktop-2x.jpg 2x" media="(min-width: 1280px)" />
+      <source
+        srcset="./images/favorites/fav-tablet-1x.webp 1x, ./images/favorites/fav-tablet-2x.webp 2x"
+        media="(min-width: 768px)"
+        type="image/webp"
+      />
+      <source srcset="./images/favorites/fav-tablet-1x.jpg 1x, ./images/favorites/fav-tablet-2x.jpg 2x" media="(min-width: 768px)" />
+      <source srcset="./images/favorites/fav-mob-1x.webp 1x, ./images/favorites/fav-mob-2x.webp 2x" media="(max-width: 767px)" type="image/webp" />
+      <source srcset="./images/favorites/fav-mob-1x.jpg 1x, ./images/favorites/fav-mob-2x.jpg 2x" media="(max-width: 767px)" />
+      <img src="./images/favorites/fav-decktop-1x.jpg" alt="rice and fish dish" class="fav-def-img" width="335" height="516" />
     </picture>
-    <!-- All-category -->
-    <div class="all-fav-btn">
-      <!-- Slider main container -->
-      <div class="swiper-favorite-navigation ">
-        <!-- Additional required wrapper -->
-        <div class="swiper-wrapper">
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">All categories</button>
-          </div>
-          <!-- Slides -->
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Beef</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Breakfast</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Chicken</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Dessert</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Goat</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Miscellaneous</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Pasta</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Pork</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Seafood</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Side</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Soup</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Starter</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Vegan</button>
-          </div>
-          <div class="swiper-slide">
-            <button type="button" class="fav-categoty-btn">Vegetarian</button>
+    <div class="favorites-main-wrapper">
+      <!-- All-category -->
+      <div class="all-fav-btn">
+        <div class="swiper-favorite-navigation">
+          <div class="swiper-wrapper js-favorites-filter">
+            <div class="swiper-slide"><button type="button" data-category="all" class="fav-categoty-btn active">All categories</button></div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- FAVORITES-CARDS -->
-    <ul class="favorite-render-cards">
-      <li class="recipe-item">
-        <a href="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" class="recipe-link">
-          <img src="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" alt="Lamb Rogan josh"
-            class="recipe-image">
-          <div class="recipe-card-bg-cover">
-            <svg class="icon-heart">
-              <path
-                d="M15.991 6.848c-2.665-3.117-7.111-3.956-10.449-1.103-3.34 2.854-3.811 7.625-1.187 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.241 0.214 0.364 0.321 0.503 0.364 0.057 0.017 0.123 0.027 0.191 0.027s0.134-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.764-7.834 10.944-10.64 2.623-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.786-2.016-10.452 1.101z">
-              </path>
-            </svg>
-            <div class="recipe-card-text-wrap">
-              <h3 class="recipe-title">Lamb Rogan josh</h3>
-              <p class="recipe-description">A spicy lamb dish from Kashmiri cuisine, flavored with a blend
-                of ar ...</p>
-              <div class="ratio-btn-wrap">
-                <div class="rating">
-                  <div class="rating-value-white">3.9</div>
-                  <div class="rating-body">
-                    <div class="rating-active" style="width:79.6%">
-                      <div class="rating-items">
-                        <input type="radio" class="rating-item" value="1" name="rating">
-                        <input type="radio" class="rating-item" value="2" name="rating">
-                        <input type="radio" class="rating-item" value="3" name="rating">
-                        <input type="radio" class="rating-item" value="4" name="rating">
-                        <input type="radio" class="rating-item" value="5" name="rating">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="open-recipe-btn" data-id="6462a8f74c3d0ddd28897fdf"
-                  data-popup="recepie">See
-                  recipe</button>
-              </div>
-            </div>
-          </div>
-
-        </a>
-      </li>
-      <li class="recipe-item">
-        <a href="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" class="recipe-link">
-          <img src="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" alt="Lamb Rogan josh"
-            class="recipe-image">
-          <div class="recipe-card-bg-cover">
-            <svg class="icon-heart">
-              <path
-                d="M15.991 6.848c-2.665-3.117-7.111-3.956-10.449-1.103-3.34 2.854-3.811 7.625-1.187 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.241 0.214 0.364 0.321 0.503 0.364 0.057 0.017 0.123 0.027 0.191 0.027s0.134-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.764-7.834 10.944-10.64 2.623-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.786-2.016-10.452 1.101z">
-              </path>
-            </svg>
-            <div class="recipe-card-text-wrap">
-              <h3 class="recipe-title">Lamb Rogan josh</h3>
-              <p class="recipe-description">A spicy lamb dish from Kashmiri cuisine, flavored with a blend
-                of ar ...</p>
-              <div class="ratio-btn-wrap">
-                <div class="rating">
-                  <div class="rating-value-white">3.9</div>
-                  <div class="rating-body">
-                    <div class="rating-active" style="width:79.6%">
-                      <div class="rating-items">
-                        <input type="radio" class="rating-item" value="1" name="rating">
-                        <input type="radio" class="rating-item" value="2" name="rating">
-                        <input type="radio" class="rating-item" value="3" name="rating">
-                        <input type="radio" class="rating-item" value="4" name="rating">
-                        <input type="radio" class="rating-item" value="5" name="rating">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="open-recipe-btn" data-id="6462a8f74c3d0ddd28897fdf"
-                  data-popup="recepie">See
-                  recipe</button>
-              </div>
-            </div>
-          </div>
-
-        </a>
-      </li>
-      <li class="recipe-item">
-        <a href="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" class="recipe-link">
-          <img src="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" alt="Lamb Rogan josh"
-            class="recipe-image">
-          <div class="recipe-card-bg-cover">
-            <svg class="icon-heart">
-              <path
-                d="M15.991 6.848c-2.665-3.117-7.111-3.956-10.449-1.103-3.34 2.854-3.811 7.625-1.187 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.241 0.214 0.364 0.321 0.503 0.364 0.057 0.017 0.123 0.027 0.191 0.027s0.134-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.764-7.834 10.944-10.64 2.623-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.786-2.016-10.452 1.101z">
-              </path>
-            </svg>
-            <div class="recipe-card-text-wrap">
-              <h3 class="recipe-title">Lamb Rogan josh</h3>
-              <p class="recipe-description">A spicy lamb dish from Kashmiri cuisine, flavored with a blend
-                of ar ...</p>
-              <div class="ratio-btn-wrap">
-                <div class="rating">
-                  <div class="rating-value-white">3.9</div>
-                  <div class="rating-body">
-                    <div class="rating-active" style="width:79.6%">
-                      <div class="rating-items">
-                        <input type="radio" class="rating-item" value="1" name="rating">
-                        <input type="radio" class="rating-item" value="2" name="rating">
-                        <input type="radio" class="rating-item" value="3" name="rating">
-                        <input type="radio" class="rating-item" value="4" name="rating">
-                        <input type="radio" class="rating-item" value="5" name="rating">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="open-recipe-btn" data-id="6462a8f74c3d0ddd28897fdf"
-                  data-popup="recepie">See
-                  recipe</button>
-              </div>
-            </div>
-          </div>
-
-        </a>
-      </li>
-      <li class="recipe-item">
-        <a href="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" class="recipe-link">
-          <img src="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" alt="Lamb Rogan josh"
-            class="recipe-image">
-          <div class="recipe-card-bg-cover">
-            <svg class="icon-heart">
-              <path
-                d="M15.991 6.848c-2.665-3.117-7.111-3.956-10.449-1.103-3.34 2.854-3.811 7.625-1.187 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.241 0.214 0.364 0.321 0.503 0.364 0.057 0.017 0.123 0.027 0.191 0.027s0.134-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.764-7.834 10.944-10.64 2.623-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.786-2.016-10.452 1.101z">
-              </path>
-            </svg>
-            <div class="recipe-card-text-wrap">
-              <h3 class="recipe-title">Lamb Rogan josh</h3>
-              <p class="recipe-description">A spicy lamb dish from Kashmiri cuisine, flavored with a blend
-                of ar ...</p>
-              <div class="ratio-btn-wrap">
-                <div class="rating">
-                  <div class="rating-value-white">3.9</div>
-                  <div class="rating-body">
-                    <div class="rating-active" style="width:79.6%">
-                      <div class="rating-items">
-                        <input type="radio" class="rating-item" value="1" name="rating">
-                        <input type="radio" class="rating-item" value="2" name="rating">
-                        <input type="radio" class="rating-item" value="3" name="rating">
-                        <input type="radio" class="rating-item" value="4" name="rating">
-                        <input type="radio" class="rating-item" value="5" name="rating">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="open-recipe-btn" data-id="6462a8f74c3d0ddd28897fdf"
-                  data-popup="recepie">See
-                  recipe</button>
-              </div>
-            </div>
-          </div>
-
-        </a>
-      </li>
-      <li class="recipe-item">
-        <a href="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" class="recipe-link">
-          <img src="https://www.themealdb.com/images/media/meals/vvstvq1487342592.jpg" alt="Lamb Rogan josh"
-            class="recipe-image">
-          <div class="recipe-card-bg-cover">
-            <svg class="icon-heart">
-              <path
-                d="M15.991 6.848c-2.665-3.117-7.111-3.956-10.449-1.103-3.34 2.854-3.811 7.625-1.187 11.001 2.182 2.806 8.781 8.724 10.944 10.64 0.241 0.214 0.364 0.321 0.503 0.364 0.057 0.017 0.123 0.027 0.191 0.027s0.134-0.010 0.195-0.029l-0.005 0.001c0.141-0.042 0.262-0.15 0.505-0.364 2.163-1.916 8.764-7.834 10.944-10.64 2.623-3.375 2.211-8.177-1.187-11.001-3.398-2.825-7.786-2.016-10.452 1.101z">
-              </path>
-            </svg>
-            <div class="recipe-card-text-wrap">
-              <h3 class="recipe-title">Lamb Rogan josh</h3>
-              <p class="recipe-description">A spicy lamb dish from Kashmiri cuisine, flavored with a blend
-                of ar ...</p>
-              <div class="ratio-btn-wrap">
-                <div class="rating">
-                  <div class="rating-value-white">3.9</div>
-                  <div class="rating-body">
-                    <div class="rating-active" style="width:79.6%">
-                      <div class="rating-items">
-                        <input type="radio" class="rating-item" value="1" name="rating">
-                        <input type="radio" class="rating-item" value="2" name="rating">
-                        <input type="radio" class="rating-item" value="3" name="rating">
-                        <input type="radio" class="rating-item" value="4" name="rating">
-                        <input type="radio" class="rating-item" value="5" name="rating">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <button type="button" class="open-recipe-btn" data-id="6462a8f74c3d0ddd28897fdf"
-                  data-popup="recepie">See
-                  recipe</button>
-              </div>
-            </div>
-          </div>
-
-        </a>
-      </li>
-    </ul>
-    <div class="fav-default">
-      <svg class="fav-icon" width="68" height="58">
-        <use href="./images/icons.svg#fav-icon"></use>
-      </svg>
-      <p class="favorites-text">
-        It appears that you haven't added any recipes to your favorites yet. To get started, you can add recipes
-        that you like to your favorites for
-        easier access in the future.
-      </p>
+      <!-- FAVORITES-CARDS -->
+      <ul class="favorite-render-cards favorites-recipes-js"></ul>
     </div>
   </div>
 </section>
