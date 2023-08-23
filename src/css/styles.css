@@ -1,4 +1,6 @@
 @import url('./reset.css');
+/* Андрій */
+@import url('./preload.css');
 /* Богдан Царук */
 @import url('./header.css');
 /* Богдан Царук */
@@ -19,7 +21,7 @@
 /* Руслан */
 @import url('./order.css');
 @import url('./custom-popup.css');
-/* Олег Юлій */
+/* Руслан та Богдан Кобак */
 @import url('./favorite.css');
 @import url('./favorite-cards.css');
 
