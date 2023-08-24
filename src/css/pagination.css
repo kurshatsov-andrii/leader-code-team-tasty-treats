@@ -119,6 +119,10 @@ body.dark-theme .tui-last-child {
     width: 782px;
     margin: 0 0 0 auto !important;
   }
+
+  .fav-pag-center {
+    margin: 0 auto !important;
+  }
 }
 
 .is-hidden {
