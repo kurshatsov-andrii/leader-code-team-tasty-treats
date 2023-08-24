@@ -60,6 +60,7 @@ body.locked {
 }
 
 #error .custom-popup__content,
+#info .custom-popup__content,
 #ok .custom-popup__content {
   max-width: 320px;
   padding: 32px;
@@ -190,6 +191,7 @@ body.locked {
   #recepie .custom-popup__content,
   #error .custom-popup__content,
   #ok .custom-popup__content,
+  #info .custom-popup__content,
   #reiting .custom-popup__content {
     padding: 32px 20px;
   }
@@ -233,6 +235,7 @@ body.dark-theme .custom-popup .label .label__text {
   opacity: 0.5;
 }
 
+body.dark-theme .rating-value,
 body.dark-theme .custom-popup__subtitle,
 body.dark-theme .ingredients-item div:last-child,
 body.dark-theme .instructions-text,

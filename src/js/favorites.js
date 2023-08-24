@@ -2,6 +2,8 @@ import Swiper from 'swiper/swiper-bundle.min.mjs';
 import 'swiper/swiper-bundle.min.css';
 import { formatDescription, formatTitle } from '../js/catalog';
 import { renderFilteredCards } from '../js/favorites-filter';
+import { alertInfo } from '../js/custom-popup';
+import { includes } from 'lodash';
 
 const favoritesPage = document.querySelector('.favorites-main-wrapper');
 let favoritesData = favoritesDataInit();
@@ -17,10 +19,44 @@ window.addEventListener('click', catchAddToFavoritesButtons);
 renderFavoritesMarkup('all');
 
 function catchAddToFavoritesButtons(e) {
-  if (e.target.classList.contains('icon-heart') || e.target.classList.contains('favorite-btn')) {
+  if (e.target.classList.contains('icon-heart')) {
     addToFavorites(e.target);
   }
+  if (e.target.classList.contains('favorite-btn')) {
+    addToFavoritesInPopup(e.target);
+  }
 }
+
+// ---------------------------------------------------------------------------
+
+function addToFavoritesInPopup(card) {
+  const recepieId = card.dataset.id;
+  const isCardFavorite = favoritesData.find(data => data.id === recepieId);
+  if (isCardFavorite !== undefined) {
+    daleteFromFavorites(recepieId);
+    addFavoritesClasses();
+    alertInfo(card.dataset.title, 'Successfully removed <br>from Favourites');
+    const currentCard = document.querySelector(`.recipe-item[data-id="${recepieId}"]`);
+    if (currentCard) {
+      currentCard.classList.remove('is-favorite');
+    }
+    return;
+  }
+  const cardInfo = {
+    id: recepieId,
+    category: card.dataset.category,
+    preview: card.dataset.preview,
+    title: card.dataset.title,
+    description: card.dataset.description,
+    rating: card.dataset.rating,
+  };
+  favoritesData.push(cardInfo);
+  localStorage.favorites = JSON.stringify(favoritesData);
+  addFavoritesClasses();
+  alertInfo(card.dataset.title, 'Successfully added <br>to Favourites');
+}
+
+//------------------------------------------------------------------------------
 
 function addToFavorites(card) {
   const cardElement = card.closest('.recipe-item');

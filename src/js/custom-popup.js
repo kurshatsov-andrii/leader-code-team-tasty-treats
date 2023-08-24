@@ -73,3 +73,11 @@ export function alertError(title, subtitle) {
   errorSubtitle.innerHTML = subtitle;
   openPopupById('error');
 }
+
+export function alertInfo(title, subtitle) {
+  const infoTitle = document.querySelector('.js-info-title');
+  const infoSubtitle = document.querySelector('.js-info-subtitle');
+  infoTitle.innerHTML = title;
+  infoSubtitle.innerHTML = subtitle;
+  openPopupById('info');
+}
