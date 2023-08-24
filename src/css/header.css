@@ -37,6 +37,7 @@
 
 .logo-color {
   color: var(--primary-text-CH-color);
+  transition: var(--transform-hover-focus);
 }
 
 body.dark-theme .logo-color {
@@ -64,12 +65,16 @@ body.dark-theme .logo-color {
 
 .shopping-icon {
   fill: transparent;
-  stroke: currentColor;
+  stroke: var(--color-black-text);
+}
+
+body.dark-theme .shopping-icon {
+  stroke: #fff;
 }
 
 .shopping-icon:hover,
 .shopping-icon:focus {
-  stroke: var(--color-green);
+  stroke: var(--color-green) !important;
 }
 
 .burger-menu {
@@ -130,7 +135,7 @@ body.dark-theme .burger-menu-icon:focus {
   height: 18px;
   background: #f8f8f8;
   border-radius: 18px;
-  transition: 0.3s;
+  transition: var(--transform-hover-focus);
 }
 
 .switcher-input:checked + .input-label {
@@ -191,6 +196,12 @@ body.dark-theme .burger-menu-icon:focus {
   border-bottom: 1px solid currentColor;
 }
 
+body.dark-theme .nav-link:hover,
+body.dark-theme .nav-link:focus {
+  color: var(--main-color);
+  border-bottom: 1px solid currentColor;
+}
+
 /* ----- Media----- */
 @media screen and (max-width: 767px) {
   .nav-list {
@@ -228,15 +239,19 @@ body.dark-theme .burger-menu-icon:focus {
   }
 
   .nav-link {
-    color: inherit;
+    color: var(--color-black-text);
     font-size: 12px;
     font-family: Inter;
     font-weight: 500;
     transition: var(--transform-hover-focus);
     border-bottom: 1px solid rgba(0, 0, 0, 0);
-    transition: var(--transform-hover-focus);
   }
 
+  body.dark-theme .nav-link {
+    color: #fff;
+  }
+
+  body.dark-theme .nav-link.current,
   .nav-link.current {
     color: var(--main-color);
   }
