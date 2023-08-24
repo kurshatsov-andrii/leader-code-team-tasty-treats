@@ -1,6 +1,5 @@
-import { renderFavoritesCartsListMarkup, favoritesDataInit } from '../js/favorites';
+import { renderFavoritesCartsListMarkup, renderFavoritesFilterNavigationMarkup, favoritesDataInit } from '../js/favorites';
 const filterNavigation = document.querySelector('.js-favorites-filter');
-const filterNavigationButtons = document.querySelectorAll('.fav-categoty-btn');
 
 let favoritesData = favoritesDataInit();
 
@@ -16,20 +15,24 @@ function favoritesFilter(e) {
   }
 }
 
-function addActiveClass(category) {
-  filterNavigationButtons.forEach(btn => {
-    btn.classList.remove('active');
-    if (btn.dataset.category === category) {
+export function renderFilteredCards(currentCategory) {
+  if (currentCategory === 'all') {
+    renderFavoritesFilterNavigationMarkup();
+    renderFavoritesCartsListMarkup(JSON.parse(localStorage.favorites));
+    addActiveClass('all');
+    return;
+  }
+  let filteredCardsList = JSON.parse(localStorage.favorites).filter(card => card.category === currentCategory);
+  renderFavoritesCartsListMarkup(filteredCardsList);
+  renderFavoritesFilterNavigationMarkup();
+  addActiveClass(currentCategory);
+}
+
+function addActiveClass(name) {
+  const ollFilterButtons = document.querySelectorAll('.fav-categoty-btn');
+  ollFilterButtons.forEach(btn => {
+    if (btn.dataset.category === name) {
       btn.classList.add('active');
     }
   });
-}
-
-function renderFilteredCards(currentCategory) {
-  if (currentCategory === 'all') {
-    renderFavoritesCartsListMarkup(favoritesData);
-    return;
-  }
-  let filteredCardsList = favoritesData.filter(card => card.category === currentCategory);
-  renderFavoritesCartsListMarkup(filteredCardsList);
 }
