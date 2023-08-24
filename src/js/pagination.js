@@ -6,6 +6,8 @@ import { renderRecipeByCategoryPerPage } from '../js/all-categories';
 import { searchedCategory } from '../js/all-categories';
 import { renderFavoritesCartsListMarkupPerPage } from './favorites-pagination';
 
+import { renderFavoritesCartsListMarkupByCategoryPerPage, pickedFavCategoryArray } from './favorites-pagination';
+
 const paginationElement = document.getElementById('pagination1');
 const paginationElementFav = document.getElementById('pagination2');
 const recipeList = document.querySelector('.recipe-list');
@@ -86,6 +88,11 @@ export function createFavPagination(totalFavItems) {
 
   pagination2.on('afterMove', event => {
     const { page } = event;
-    renderFavoritesCartsListMarkupPerPage(page);
+    let array = pickedFavCategoryArray;
+    if (!(array.length === 0)) {
+      renderFavoritesCartsListMarkupByCategoryPerPage(array, page);
+    } else {
+      renderFavoritesCartsListMarkupPerPage(page);
+    }
   });
 }
