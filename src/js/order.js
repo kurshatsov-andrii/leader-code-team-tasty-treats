@@ -42,7 +42,7 @@ async function orderSend(e) {
       })
       .catch(error => {
         setTimeout(() => {
-          alertError(error.request.statusText, error.message);
+          alertError(error.request.statusText, 'The phone must be in format +380000000000');
         }, 500);
       });
   }
