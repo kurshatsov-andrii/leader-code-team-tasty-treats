@@ -1,6 +1,7 @@
 import Swiper from 'swiper/swiper-bundle.min.mjs';
-import { formatDescription, formatTitle } from '../js/catalog';
 import 'swiper/swiper-bundle.min.css';
+import { formatDescription, formatTitle } from '../js/catalog';
+
 const favoritesPage = document.querySelector('.favorites-main-wrapper');
 let favoritesData = favoritesDataInit();
 export function favoritesDataInit() {
