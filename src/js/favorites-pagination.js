@@ -50,7 +50,6 @@ function handleFavNavigationClick(event) {
     } else {
       pickedFavCategoryArray = favoritesData;
     }
-
     if (pickedFavCategoryArray.length <= PER_PAGE_FAV) {
       paginationWrap2.classList.add('is-hidden');
     } else {

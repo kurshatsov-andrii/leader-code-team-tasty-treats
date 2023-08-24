@@ -108,7 +108,6 @@ function renderFavoritesMarkup(category) {
       renderEmptyFavoritesMarkup();
       return;
     }
-    //renderFavoritesFilterNavigationMarkup();
     renderFilteredCards(category);
   }
 }
