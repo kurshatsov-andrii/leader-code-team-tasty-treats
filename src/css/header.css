@@ -53,11 +53,13 @@ body.dark-theme .logo-color {
   display: flex;
   align-items: center;
   justify-content: center;
-
   background-color: transparent;
   border: none;
   padding: 0;
   cursor: pointer;
+}
+.shopping-link svg {
+  transition: var(--transform-hover-focus);
 }
 
 .shopping-icon {
@@ -66,8 +68,8 @@ body.dark-theme .logo-color {
 }
 
 .shopping-icon:hover,
-.shopping-icon:focus{
-   stroke: var(--color-green);
+.shopping-icon:focus {
+  stroke: var(--color-green);
 }
 
 .burger-menu {
@@ -186,7 +188,7 @@ body.dark-theme .burger-menu-icon:focus {
 .nav-link:hover,
 .nav-link:focus {
   color: var(--main-color);
-  text-decoration: underline;
+  border-bottom: 1px solid currentColor;
 }
 
 /* ----- Media----- */
@@ -230,6 +232,9 @@ body.dark-theme .burger-menu-icon:focus {
     font-size: 12px;
     font-family: Inter;
     font-weight: 500;
+    transition: var(--transform-hover-focus);
+    border-bottom: 1px solid rgba(0, 0, 0, 0);
+    transition: var(--transform-hover-focus);
   }
 
   .nav-link.current {

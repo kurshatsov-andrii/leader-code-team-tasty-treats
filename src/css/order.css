@@ -55,6 +55,7 @@
   padding: 14px 18px;
   color: var(--color-black-text);
   font-family: var(--primary-font);
+  background: rgba(0, 0, 0, 0);
   font-size: 16px;
   font-style: normal;
   font-weight: 500;
@@ -85,6 +86,24 @@
 
 .custom-input:focus {
   border: 1px solid var(--color-black-text);
+}
+
+body.dark-theme .custom-input {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+body.dark-theme .custom-input ::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-theme .custom-input:focus {
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+body.dark-theme .custom-input.red {
+  border: 1px solid rgb(196, 28, 28);
+  color: rgb(196, 28, 28);
 }
 
 .custom-input:focus::placeholder {

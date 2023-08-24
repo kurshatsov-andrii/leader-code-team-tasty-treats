@@ -207,3 +207,38 @@ body.locked {
     border-bottom: 2px solid rgba(0, 0, 0, 0);
   }
 }
+
+body.dark-theme .tag-item {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-theme .ingredients-item {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.dark-theme .custom-popup {
+  background-color: #4647447d;
+}
+
+body.dark-theme .custom-popup__content {
+  background: #050505;
+}
+
+body.dark-theme .popup__close:before,
+body.dark-theme .popup__close:after {
+  background: #fff;
+}
+
+body.dark-theme .custom-popup .label .label__text {
+  opacity: 0.5;
+}
+
+body.dark-theme .custom-popup__subtitle,
+body.dark-theme .ingredients-item div:last-child,
+body.dark-theme .instructions-text,
+body.dark-theme .modal-text,
+body.dark-theme .custom-popup .label .label__text,
+body.dark-theme .backend-info h2,
+body.dark-theme .custom-popup__title {
+  color: #fff;
+}
