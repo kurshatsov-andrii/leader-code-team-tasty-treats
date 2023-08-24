@@ -45,30 +45,18 @@ if (filterNavigation) {
 function handleFavNavigationClick(event) {
   if (event.target.classList.contains('fav-categoty-btn')) {
     pickedFavCategory = event.target.dataset.category;
-
-    if (pickedFavCategory === 'all') {
-      pickedFavCategory = '';
-      pickedFavCategoryArray = favoritesData;
-
-      if (localStorage.favorites) {
-        totalFavItems = JSON.parse(localStorage.favorites).length;
-      }
-
-      createFavPagination(totalFavItems);
-
-      if (paginationWrap2.classList.contains('is-hidden')) {
-        paginationWrap2.classList.remove('is-hidden');
-      }
-    } else {
+    if (pickedFavCategory !== 'all') {
       pickedFavCategoryArray = favoritesData.filter(({ category }) => category === pickedFavCategory);
+    } else {
+      pickedFavCategoryArray = favoritesData;
+    }
 
-      if (pickedFavCategoryArray.length <= PER_PAGE_FAV) {
-        paginationWrap2.classList.add('is-hidden');
-      } else {
-        totalFavItems = pickedFavCategoryArray.length;
-        createFavPagination(totalFavItems);
-        paginationWrap2.classList.remove('is-hidden');
-      }
+    if (pickedFavCategoryArray.length <= PER_PAGE_FAV) {
+      paginationWrap2.classList.add('is-hidden');
+    } else {
+      totalFavItems = pickedFavCategoryArray.length;
+      createFavPagination(totalFavItems);
+      paginationWrap2.classList.remove('is-hidden');
     }
   }
 }

@@ -1,4 +1,5 @@
 import { renderFavoritesCartsListMarkup, renderFavoritesFilterNavigationMarkup, favoritesDataInit } from '../js/favorites';
+import { renderFavoritesCartsListMarkupByCategoryPerPage } from '../js/favorites-pagination';
 const filterNavigation = document.querySelector('.js-favorites-filter');
 
 let favoritesData = favoritesDataInit();
@@ -18,12 +19,14 @@ function favoritesFilter(e) {
 export function renderFilteredCards(currentCategory) {
   if (currentCategory === 'all') {
     renderFavoritesFilterNavigationMarkup();
-    renderFavoritesCartsListMarkup(JSON.parse(localStorage.favorites));
+    renderFavoritesCartsListMarkupByCategoryPerPage(JSON.parse(localStorage.favorites), 1);
+    //renderFavoritesCartsListMarkup(JSON.parse(localStorage.favorites));
     addActiveClass('all');
     return;
   }
   let filteredCardsList = JSON.parse(localStorage.favorites).filter(card => card.category === currentCategory);
-  renderFavoritesCartsListMarkup(filteredCardsList);
+  renderFavoritesCartsListMarkupByCategoryPerPage(filteredCardsList, 1);
+  // renderFavoritesCartsListMarkup(filteredCardsList);
   renderFavoritesFilterNavigationMarkup();
   addActiveClass(currentCategory);
 }
