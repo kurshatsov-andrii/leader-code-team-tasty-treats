@@ -2,8 +2,8 @@ import Swiper from 'swiper/swiper-bundle.min.mjs';
 import 'swiper/swiper-bundle.min.css';
 import { formatDescription, formatTitle } from '../js/catalog';
 import { renderFilteredCards } from '../js/favorites-filter';
+import { renderFavoritesCartsListMarkupByCategoryPerPage } from '../js/favorites-pagination';
 import { alertInfo } from '../js/custom-popup';
-import { includes } from 'lodash';
 
 const favoritesPage = document.querySelector('.favorites-main-wrapper');
 let favoritesData = favoritesDataInit();
@@ -26,8 +26,6 @@ function catchAddToFavoritesButtons(e) {
     addToFavoritesInPopup(e.target);
   }
 }
-
-// ---------------------------------------------------------------------------
 
 function addToFavoritesInPopup(card) {
   const recepieId = card.dataset.id;
@@ -55,8 +53,6 @@ function addToFavoritesInPopup(card) {
   addFavoritesClasses();
   alertInfo(card.dataset.title, 'Successfully added <br>to Favourites');
 }
-
-//------------------------------------------------------------------------------
 
 function addToFavorites(card) {
   const cardElement = card.closest('.recipe-item');
@@ -112,7 +108,6 @@ function renderFavoritesMarkup(category) {
       renderEmptyFavoritesMarkup();
       return;
     }
-    renderFavoritesFilterNavigationMarkup();
     renderFilteredCards(category);
   }
 }
