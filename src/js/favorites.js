@@ -128,7 +128,7 @@ export function renderFavoritesCartsListMarkup(arr) {
       ({ id, category, preview, title, description, rating }) =>
         `
           <li
-          class="recipe-item js-data-info is-favorite"
+          class="recipe-item js-data-info cool"
           data-title="${title}"
           data-description="${description}"
           data-preview="${preview}"
