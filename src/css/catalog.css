@@ -183,6 +183,7 @@ body.dark-theme .reset-text {
 }
 
 .recipe-card-text-wrap {
+  width: 100%;
   position: absolute;
   left: 0;
   bottom: 0;

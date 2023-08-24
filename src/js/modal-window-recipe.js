@@ -74,16 +74,13 @@ async function renderModalWindow(id) {
 
 function modalWindowRecipesMarkUp(obj) {
   const { title, instructions, youtube, ingredients, rating, tags, time, preview, category, description, _id } = obj;
+  let buttonText = 'Add to favorites';
+  const isCardFavorite = JSON.parse(localStorage.favorites).find(data => data.id === _id);
+  if (isCardFavorite !== undefined) {
+    buttonText = 'Remove from favorites';
+  }
   const addHtml = `
-      <h2 
-        class="js-recepie-popup-title js-data-info"
-        data-id="${_id}"
-        data-category="${category}"
-        data-preview="${preview}" 
-        data-title="${title}"
-        data-description="${description}"
-        data-rating="${rating}" 
-      >${title.toUpperCase()}</h2>
+      <h2 class="js-recepie-popup-title js-data-info">${title.toUpperCase()}</h2>
       <div class="video-recipe">
         <iframe
           width="560"
@@ -133,7 +130,18 @@ function modalWindowRecipesMarkUp(obj) {
       </div>
       <div class="instructions-container">
       <p class="instructions-text">${instructions}</p></div>
-      <button type="button" class="favorite-btn btn">Add to favorite</button>
+      <button 
+        type="button" 
+        class="favorite-btn btn" 
+        data-id="${_id}"
+        data-category="${category}"
+        data-preview="${preview}" 
+        data-title="${title}"
+        data-description="${description}"
+        data-rating="${rating}" 
+      >
+      ${buttonText} 
+      </button>
       `;
   return addHtml;
 }
