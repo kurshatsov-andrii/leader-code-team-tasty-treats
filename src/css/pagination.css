@@ -124,3 +124,9 @@ body.dark-theme .tui-last-child {
 .is-hidden {
   display: none;
 }
+
+.favorites-main .tui-pagination {
+  width: 100%;
+  height: auto;
+  margin: 0 !important;
+}
