@@ -104,11 +104,11 @@ function modalWindowRecipesMarkUp(obj) {
         <div class="rating-body">
           <div class="rating-active" style="width:${(rating * 100) / 5}%">
             <div class="rating-items">
-              <input type="radio" class="rating-item" value="1" name="rating" />
-              <input type="radio" class="rating-item" value="2" name="rating" />
-              <input type="radio" class="rating-item" value="3" name="rating" />
-              <input type="radio" class="rating-item" value="4" name="rating" />
-              <input type="radio" class="rating-item" value="5" name="rating" />
+              <input type="radio" class="rating-item" value="1" name="rating" aria-label="1" />
+              <input type="radio" class="rating-item" value="2" name="rating" aria-label="2" />
+              <input type="radio" class="rating-item" value="3" name="rating" aria-label="3" />
+              <input type="radio" class="rating-item" value="4" name="rating" aria-label="4" />
+              <input type="radio" class="rating-item" value="5" name="rating" aria-label="5" />
             </div>
           </div>
         </div>
