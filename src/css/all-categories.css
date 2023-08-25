@@ -33,7 +33,7 @@ body.dark-theme .btn-all:focus {
   width: 8px;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(5, 5, 5, 0.18);
+  background: rgba(5, 5, 5, 0.1);
   box-shadow: inset 1px 1px 10px #f3faf7;
   border-radius: 12px;
 }
