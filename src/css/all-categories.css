@@ -39,7 +39,7 @@ body.dark-theme .btn-all:focus {
 }
 /* scrooll для Mozilla Firefox */
 .categories-container {
-  scrollbar-color: rgba(5, 5, 5, 0.18);
+  scrollbar-color: rgba(5, 5, 5, 0.1);  
   scrollbar-width: thin;
 }
 li {
@@ -47,7 +47,7 @@ li {
 }
 .btn-all {
   background-color: transparent;
-  font-family: --primary-font();
+  font-family: var(--primary-font);
   color: rgba(5, 5, 5, 0.3);
   font-weight: 500;
   letter-spacing: 0em;
@@ -63,7 +63,7 @@ li {
 }
 
 .all-categories {
-  font-family: --primary-font();
+  font-family: var(--primary-font);
   font-weight: 500;
   width: 176px;
   height: 50px;

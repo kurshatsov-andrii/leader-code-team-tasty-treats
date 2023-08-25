@@ -90,7 +90,7 @@
     line-height: calc(16 / 12);
     height: 34px;
     overflow: hidden;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
     /* text-overflow:ellipsis;
         white-space:nowrap; */
     display: -webkit-box;
@@ -299,7 +299,7 @@
     color: var(--color-black-text);
     height: 41px;
     overflow: hidden;
-    letter-spacing: 0%;
+    letter-spacing: 0px;
     /* text-overflow:ellipsis;
         white-space:nowrap; */
     display: -webkit-box;
