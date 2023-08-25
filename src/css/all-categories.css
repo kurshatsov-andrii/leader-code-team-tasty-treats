@@ -39,7 +39,7 @@ body.dark-theme .btn-all:focus {
 }
 /* scrooll для Mozilla Firefox */
 .categories-container {
-  scrollbar-color: rgba(5, 5, 5, 0.1);  
+  /* scrollbar-color: rgba(5, 5, 5, 0.1);   */
   scrollbar-width: thin;
 }
 li {
